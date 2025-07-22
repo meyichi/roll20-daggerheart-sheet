@@ -1,0 +1,1175 @@
+/* GENERAL STYLING */
+h2 {
+    text-align: center;
+}
+
+h4 {
+    text-decoration: underline;
+}
+
+.centered {
+    text-align: center;
+}
+
+.subtext {
+    font-size: 10px;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+textarea {
+    margin-bottom: 0px;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+div {
+    margin-top: 5px;
+}
+
+.no-top {
+    margin-top: 0px;
+}
+
+.margin-left {
+    margin-left: 5px;
+}
+
+select > option[disabled="true"] {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Hide actual radio button */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width:15px;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 6px;
+}
+  
+/* Styles for fake radio button */
+input[type="radio"] + span::before {
+    border: solid 1px #a8a8a8;
+    line-height: 14px;
+    text-align: middle;
+    display: inline-block;
+    vertical-align: middle;
+    
+    -moz-box-shadow: 0 0 2px #ccc;
+    -webkit-box-shadow: 0 0 2px #ccc;
+    box-shadow: 0 0 2px #ccc;
+    
+    background: #f6f6f6;
+    background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
+    background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
+    background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
+    background: -o-radial-gradient(#f6f6f6, #dfdfdf);
+    background: radial-gradient(#f6f6f6, #dfdfdf);
+
+    content: "•";
+    width: 12px;
+    height: 12px;
+    font-size: 36px;
+    
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+  
+/* Remove dot from all radios _after_ selected one */
+input[type="radio"]:checked ~ input[type="radio"] + span::before {    
+    content: "";
+}
+
+/* Hide X by default */
+input[type=radio].sheet-zero:checked + span::before {
+    opacity: 0;
+}
+
+/* Display X on hover */
+input[type=radio].sheet-zero:hover + span::before {
+    opacity: 1;
+}
+
+input[type=radio].sheet-zero + span::before {
+    font-size: 16px;
+    content: "✖";
+    opacity: 0.25;
+}
+
+/* Configure the button styling; this example makes it look like a checkbox */
+.fake-checkbox {
+    padding: 0;
+    border: solid 1px #a8a8a8;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+/* Hide the checkbox if the attribute value is "hidden" */
+input.toggle[value="hidden"] + button.fake-checkbox {
+    display: none;
+}
+
+/* Hide the X unless the button is clicked */
+input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+.toggle-group {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* HEADER STYLING */
+.header-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: ". header-name-label header-name-input header-name-input header-name-input . . header-player-label header-player-input header-player-input header-player-input ."
+        ". header-ancestry-label header-ancestry-input header-ancestry-input header-ancestry-input . . header-community-label header-community-input header-community-input header-community-input ."
+        ". header-class-label header-class-input header-class-input header-level . . header-subclass-label header-subclass-input header-subclass-input header-subclass-input .";
+    margin-bottom: 10px;
+}
+
+.header-name-label {
+    grid-area: header-name-label;
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+.header-name-input {
+    grid-area: header-name-input;
+    padding-left: 5px;
+}
+
+.header-player-label {
+    grid-area: header-player-label;
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+.header-player-input {
+    grid-area: header-player-input;
+    padding-left: 5px;
+}
+
+.header-ancestry-label {
+    grid-area: header-ancestry-label;
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+.header-ancestry-input {
+    grid-area: header-ancestry-input;
+    padding-left: 5px;
+}
+
+.header-community-label {
+    grid-area: header-community-label;
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+.header-community-input {
+    grid-area: header-community-input;
+    padding-left: 5px;
+}
+
+.header-class-label {
+    grid-area: header-class-label;
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+.header-class-input {
+    grid-area: header-class-input;
+    padding-left: 5px;
+}
+
+.header-level {
+    grid-area: header-level;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.header-level-input {
+    margin-left: 5px;
+}
+
+.header-subclass-label {
+    grid-area: header-subclass-label;
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+.header-subclass-input {
+    grid-area: header-subclass-input;
+    padding-left: 5px;
+}
+
+/* TRAITS STYLING */
+.traits-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: ". . traits-header traits-header . ."
+        "traits-agility-label traits-strength-label traits-finesse-label traits-instinct-label traits-presence-label traits-knowledge-label"
+        "traits-agility-input traits-strength-input traits-finesse-input traits-instinct-input traits-presence-input traits-knowledge-input"
+        "traits-agility-roll traits-strength-roll traits-finesse-roll traits-instinct-roll traits-presence-roll traits-knowledge-roll";
+    margin-bottom: 10px;
+}
+
+.traits-header {
+    grid-area: traits-header;
+    text-align: center;
+}
+
+.traits-agility-label {
+    grid-area: traits-agility-label;
+    text-align: center;
+}
+
+.traits-strength-label {
+    grid-area: traits-strength-label;
+    text-align: center;
+}
+
+.traits-finesse-label {
+    grid-area: traits-finesse-label;
+    text-align: center;
+}
+
+.traits-instinct-label {
+    grid-area: traits-instinct-label;
+    text-align: center;
+}
+
+.traits-presence-label {
+    grid-area: traits-presence-label;
+    text-align: center;
+}
+
+.traits-knowledge-label {
+    grid-area: traits-knowledge-label;
+    text-align: center;
+}
+
+.traits-agility-input {
+    grid-area: traits-agility-input;
+    text-align: center;
+}
+
+.traits-strength-input {
+    grid-area: traits-strength-input;
+    text-align: center;
+}
+
+.traits-finesse-input {
+    grid-area: traits-finesse-input;
+    text-align: center;
+}
+
+.traits-instinct-input {
+    grid-area: traits-instinct-input;
+    text-align: center;
+}
+
+.traits-presence-input {
+    grid-area: traits-presence-input;
+    text-align: center;
+}
+
+.traits-knowledge-input {
+    grid-area: traits-knowledge-input;
+    text-align: center;
+}
+
+.duality-roll {
+    background-color: transparent;
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Duality.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    border: none;
+}
+
+.traits-agility-roll {
+    grid-area: traits-agility-roll;
+    text-align: center;
+}
+
+.traits-strength-roll {
+    grid-area: traits-strength-roll;
+    text-align: center;
+}
+
+.traits-finesse-roll {
+    grid-area: traits-finesse-roll;
+    text-align: center;
+}
+
+.traits-instinct-roll {
+    grid-area: traits-instinct-roll;
+    text-align: center;
+}
+
+.traits-presence-roll {
+    grid-area: traits-presence-roll;
+    text-align: center;
+}
+
+.traits-knowledge-roll {
+    grid-area: traits-knowledge-roll;
+    text-align: center;
+}
+
+/* RESOURCES STYLING */
+.resources-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: ". . . . resources-header resources-header resources-header resources-header . . . ."
+    ". evasion-label . . armor-label . . hp-max-label . . stress-max-label ."
+    ". evasion-input . . armor-input . . hp-max-input . . stress-max-input ."
+    ". . . . . spacer spacer . . . . . "
+    "hp-container hp-container hp-container . weapons-container weapons-container weapons-container weapons-container . hope-container hope-container hope-container";
+    margin-bottom: 10px;
+}
+
+.resources-header {
+    grid-area: resources-header;
+    text-align: center;
+}
+
+.evasion-label {
+    grid-area: evasion-label;
+    text-align: center;
+}
+
+.armor-label {
+    grid-area: armor-label;
+    text-align: center;
+}
+
+.hp-max-label {
+    grid-area: hp-max-label;
+    text-align: center;
+}
+
+.stress-max-label {
+    grid-area: stress-max-label;
+    text-align: center;
+}
+
+.evasion-input {
+    grid-area: evasion-input;
+    text-align: center;
+}
+
+.armor-input {
+    grid-area: armor-input;
+    text-align: center;
+}
+
+.hp-max-input {
+    grid-area: hp-max-input;
+    text-align: center;
+}
+
+.stress-max-input {
+    grid-area: stress-max-input;
+    text-align: center;
+}
+
+.resources-spacer {
+    grid-area: spacer;
+    height: 12px;
+}
+
+/* HP STYLING */
+.hp-container {
+    grid-area: hp-container;
+}
+
+.hp-thresholds {
+    grid-area: hp-thresholds;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: "hp-thresholds-label hp-thresholds-label hp-thresholds-label hp-thresholds-label hp-thresholds-label hp-thresholds-label hp-thresholds-label hp-thresholds-label"
+    "hp-thresholds-minor-label hp-thresholds-minor-label hp-thresholds-major-input hp-thresholds-major-label hp-thresholds-major-label hp-thresholds-severe-input hp-thresholds-severe-label hp-thresholds-severe-label"
+}
+
+.hp-thresholds-label {
+    grid-area: hp-thresholds-label;
+    text-align: center;
+}
+
+.hp-thresholds-minor-label {
+    grid-area: hp-thresholds-minor-label;
+    text-align: center;
+}
+
+.hp-thresholds-major-input {
+    grid-area: hp-thresholds-major-input;
+}
+
+.hp-thresholds-major-label {
+    grid-area: hp-thresholds-major-label;
+    text-align: center;
+}
+
+.hp-thresholds-severe-input {
+    grid-area: hp-thresholds-severe-input;
+}
+
+.hp-thresholds-severe-label {
+    grid-area: hp-thresholds-severe-label;
+    text-align: center;
+}
+
+.hp-slots-container {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* WEAPONS CONTAINER STYLING */
+.weapons-container {
+    grid-area: weapons-container;
+}
+
+.weapons-primary-secondary {
+    grid-area: weapons-primary;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "weapons-primary-label weapons-primary-label weapons-primary-label weapons-primary-label"
+    "weapons-primary-input weapons-primary-input weapons-primary-range-input weapons-primary-trait"
+    "weapons-primary-hit weapons-primary-hit weapons-primary-damage weapons-primary-damage"
+    "weapons-secondary-label weapons-secondary-label weapons-secondary-label weapons-secondary-label"
+    "weapons-secondary-input weapons-secondary-input weapons-secondary-range-input weapons-secondary-trait"
+    "weapons-secondary-hit weapons-secondary-hit weapons-secondary-damage weapons-secondary-damage";
+}
+
+.weapons-primary-label {
+    grid-area: weapons-primary-label;
+    text-align: center;
+}
+
+.weapons-primary-input {
+    grid-area: weapons-primary-input;
+}
+
+.weapons-primary-range-input {
+    grid-area: weapons-primary-range-input;
+    text-align: center;
+}
+
+.weapons-primary-trait {
+    grid-area: weapons-primary-trait;
+    text-align: center;
+}
+
+.weapons-primary-hit {
+    grid-area: weapons-primary-hit;
+    margin-bottom: 5px;
+}
+
+.weapons-primary-hit-label {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.weapons-primary-hit-input {
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weapons-primary-damage {
+    grid-area: weapons-primary-damage;
+    margin-bottom: 5px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "weapons-primary-damage-label weapons-primary-damage-label weapons-primary-damage-label"
+    "weapons-primary-damage-dice weapons-primary-damage-modifier weapons-primary-damage-roll"
+}
+
+.weapons-primary-damage-label {
+    grid-area: weapons-primary-damage-label;
+    margin-top: 0px;
+}
+
+.weapons-primary-damage-dice {
+    grid-area: weapons-primary-damage-dice;
+    margin-top: 0px;
+}
+
+.weapons-primary-damage-modifier {
+    grid-area: weapons-primary-damage-modifier;
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.weapons-primary-damage-roll {
+    grid-area: weapons-primary-damage-roll;
+    margin-top: 0px;
+}
+
+.damage-roll {
+    background-color: transparent;
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_d20.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    border: none;
+}
+
+.weapons-secondary-label {
+    grid-area: weapons-secondary-label;
+    text-align: center;
+}
+
+.weapons-secondary-input {
+    grid-area: weapons-secondary-input;
+}
+
+.weapons-secondary-range-input {
+    grid-area: weapons-secondary-range-input;
+    text-align: center;
+}
+
+.weapons-secondary-trait {
+    grid-area: weapons-secondary-trait;
+    text-align: center;
+}
+
+.weapons-secondary-hit {
+    grid-area: weapons-secondary-hit;
+    margin-bottom: 5px;
+}
+
+.weapons-secondary-hit-label {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.weapons-secondary-hit-input {
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weapons-secondary-damage {
+    grid-area: weapons-secondary-damage;
+    margin-bottom: 5px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "weapons-secondary-damage-label weapons-secondary-damage-label weapons-secondary-damage-label"
+    "weapons-secondary-damage-dice weapons-secondary-damage-modifier weapons-secondary-damage-roll"
+}
+
+.weapons-secondary-damage-label {
+    grid-area: weapons-secondary-damage-label;
+    margin-top: 0px;
+}
+
+.weapons-secondary-damage-dice {
+    grid-area: weapons-secondary-damage-dice;
+    margin-top: 0px;
+}
+
+.weapons-secondary-damage-modifier {
+    grid-area: weapons-secondary-damage-modifier;
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.weapons-secondary-damage-roll {
+    grid-area: weapons-secondary-damage-roll;
+    margin-top: 0px;
+}
+
+/* HOPE CONTAINER STYLING */
+.hope-container {
+    grid-area: hope-container;
+}
+
+.hope-experiences-label {
+    display: grid;
+    grid-template-columns: repeated(3, 1fr);
+    grid-template-areas: "hope-experiences-label-description hope-experiences-label-description hope-experiences-label-bonus";
+}
+
+.hope-experiences-label-description {
+    grid-area: hope-experiences-label-description;
+}
+
+.hope-experiences-label-bonus {
+    grid-area: hope-experiences-label-bonus
+}
+
+.repcontainer[data-groupname="repeating_experiences"] {
+    max-height: 183px;
+    overflow-y: auto;
+    margin-top: 0px;
+}
+
+[data-groupname="repeating_experiences"] .repitem {
+    margin-top: 0px;
+}
+
+.hope-experiences-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "hope-experiences-input hope-experiences-input hope-experiences-bonus";
+}
+
+.hope-experiences-input {
+    grid-area: hope-experiences-input;
+}
+
+.hope-experiences-bonus {
+    grid-area: hope-experiences-bonus;
+}
+
+/* DOMAIN & FEATURES STYLING */
+.domain-features-container {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-areas: "domain-container domain-container domain-container domain-container domain-container domain-container . features-container features-container features-container features-container features-container features-container"
+}
+
+/* DOMAIN STYLING */
+.domain-container {
+    grid-area: domain-container;
+}
+
+.repcontainer[data-groupname="repeating_domain"] {
+    margin-top: 0px;
+}
+
+[data-groupname="repeating_domain"] .repitem {
+    border-bottom: 1pt solid black;
+}
+
+.domain-effect-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "domain-effect-inputs-vaulted-toggle domain-effect-inputs-level domain-effect-inputs-domain domain-effect-inputs-domain"
+    "domain-effect-inputs-name domain-effect-inputs-name domain-effect-inputs-used-toggle domain-effect-inputs-tokens-toggle";
+    margin-bottom: 5px;
+}
+
+.domain-effect-inputs-vaulted-toggle {
+    grid-area: domain-effect-inputs-vaulted-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.domain-effect-inputs-level {
+    grid-area: domain-effect-inputs-level;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.domain-effect-inputs-domain {
+    grid-area: domain-effect-inputs-domain;
+}
+
+.domain-effect-inputs-name {
+    grid-area: domain-effect-inputs-name;
+}
+
+.domain-effect-inputs-used-toggle {
+    grid-area: domain-effect-inputs-used-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.domain-effect-inputs-tokens-toggle {
+    grid-area: domain-effect-inputs-tokens-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+input.toggle-used:not([value="active"]) ~ div.domain-effect-inputs-used-toggle > button.fake-checkbox > span.checked,
+input.toggle-vaulted:not([value="active"]) ~ div.domain-effect-inputs-vaulted-toggle > button.fake-checkbox > span.checked,
+input.toggle-shortrest:not([value="active"]) ~ div.domain-effect-tracker-shortrest-toggle > button.fake-checkbox > span.checked,
+input.toggle-longrest:not([value="active"]) ~ div.domain-effect-tracker-longrest-toggle > button.fake-checkbox > span.checked,
+input.toggle-session:not([value="active"]) ~ div.domain-effect-tracker-session-toggle > button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+.domain-effect-tracker {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "domain-effect-tracker-label domain-effect-tracker-shortrest-toggle domain-effect-tracker-longrest-toggle domain-effect-tracker-session-toggle";
+    margin-bottom: 5px;
+}
+
+.domain-effect-tracker-label {
+    grid-area: domain-effect-tracker-label;
+}
+
+.domain-effect-tracker-shortrest-toggle {
+    grid-area: domain-effect-tracker-shortrest-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.domain-effect-tracker-longrest-toggle {
+    grid-area: domain-effect-tracker-longrest-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.domain-effect-tracker-session-toggle {
+    grid-area: domain-effect-tracker-session-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+/* FEATURES STYLING */
+.features-container {
+    grid-area: features-container;
+}
+
+.features-unique {
+    padding-left: 20px;
+}
+
+input.features-unique-name-input {
+    width: calc(50% - 5px);
+    margin-bottom: 5px;
+}
+
+textarea.features-small-textarea {
+    width: calc(100% - 10px);
+    height: 50px;
+}
+
+.features-class {
+    padding-left: 20px;
+}
+
+textarea.features-big-textarea {
+    width: calc(100% - 10px);
+    height: 100px;
+}
+
+.features-class-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "features-class-inputs-name features-class-inputs-name features-class-inputs-used-toggle features-class-inputs-tokens-toggle";
+    margin-bottom: 5px;
+}
+
+.features-class-inputs-name {
+    grid-area: features-class-inputs-name;
+}
+
+.features-class-inputs-used-toggle {
+    grid-area: features-class-inputs-used-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+input.toggle-used[value="hidden"] ~ div.features-class-inputs-used-toggle {
+    display: none;
+}
+
+.features-class-inputs-used-toggle > span {
+    height: 85%;
+    display: flex;
+    align-items: center;
+}
+
+.features-class-inputs-used-toggle > button {
+    margin-left: 5px;
+}
+
+input.toggle-used:not([value="active"]) ~ div.features-class-inputs-used-toggle > button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+input.toggle-tokens[value="hidden"] ~ div.features-class-inputs-tokens-toggle {
+    display: none;
+}
+
+.features-class-inputs-tokens-toggle {
+    grid-area: features-class-inputs-tokens-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.features-class-inputs-tokens-toggle > span {
+    height: 85%;
+    display: flex;
+    align-items: center;
+}
+
+.features-class-inputs-tokens-toggle > input {
+    margin-left: 5px;
+}
+
+input.toggle-used:not([value="hidden"]) ~ div.features-class-inputs-tokens-toggle {
+    margin-left: 5px;
+}
+
+input.toggle-class1[value="hidden"] ~ div.features-class1,
+input.toggle-class2[value="hidden"] ~ div.features-class2 {
+    display: none;
+}
+
+.features-subclass-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.features-subclass-header > div > button {
+    margin-left: 5px;
+}
+
+input.toggle-subclass-specialized:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-specialized-toggle > button.fake-checkbox > span.checked,
+input.toggle-subclass-mastered:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-mastered-toggle > button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+input.toggle-subclass-specialized[value="inactive"] ~ div.features-subclass > div.features-subclass-specialization-container,
+input.toggle-subclass-mastered[value="inactive"] ~ div.features-subclass > div.features-subclass-mastery-container {
+    display: none;
+}
+
+.features-subclass-header-specialized-toggle,
+.features-subclass-header-mastered-toggle {
+    height: 85%;
+    display: flex;
+    align-items:center;
+}
+
+input.toggle-used:not([value="active"]) ~ div.features-class-inputs-used-toggle > button.fake-checkbox > span.checked,
+input.toggle-used:not([value="active"]) ~ div.features-subclass-inputs-used-toggle > button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+input.toggle-used[value="hidden"] ~ div.features-subclass-inputs-used-toggle,
+input.toggle-tokens[value="hidden"] ~ div.features-subclass-inputs-tokens-toggle {
+    display: none;
+}
+
+.features-subclass {
+    padding-left: 20px;
+}
+
+input.toggle-spellcasting-trait[value="hidden"] ~ div.features-subclass-spellcasting-container {
+    display: none;
+}
+
+.features-subclass-spellcasting-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "features-subclass-spellcasting-label features-subclass-spellcasting-input";
+    margin-bottom: 5px;
+}
+
+.features-subclass-spellcasting-label {
+    grid-area: features-subclass-spellcasting-label;
+    display: flex;
+    align-items: center;
+}
+
+.features-subclass-spellcasting-input {
+    grid-area: features-subclass-spellcasting-input;
+}
+
+.features-subclass-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "features-subclass-inputs-name features-subclass-inputs-name features-subclass-inputs-used-toggle features-subclass-inputs-tokens-toggle";
+    margin-bottom: 5px;
+}
+
+.features-subclass-inputs-name {
+    grid-area: features-subclass-inputs-name;
+}
+
+.features-subclass-inputs-used-toggle {
+    grid-area: features-subclass-inputs-used-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.features-subclass-inputs-tokens-toggle {
+    grid-area: features-subclass-inputs-tokens-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+input.toggle-subclass-foundation1[value="hidden"] ~ div.features-subclass-foundation1,
+input.toggle-subclass-specialization1[value="hidden"] ~ div.features-subclass-specialization1,
+input.toggle-subclass-mastery1[value="hidden"] ~ div.features-subclass-mastery1 {
+    display: none;
+}
+
+input.toggle-ancestry-mixed[value="hidden"] ~ div.features-ancestry-mixed-container {
+    display: none;
+}
+
+.features-ancestry-mixed-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "features-ancestry-mixed-label0 features-ancestry-mixed-input0 features-ancestry-mixed-label1 features-ancestry-mixed-input1"
+}
+
+.features-ancestry-mixed-label0 {
+    grid-area: features-ancestry-mixed-label0;
+    display: flex;
+    align-items: center;
+}
+
+.features-ancestry-mixed-input0 {
+    grid-area: features-ancestry-mixed-input0;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+}
+
+.features-ancestry-mixed-label1 {
+    grid-area: features-ancestry-mixed-label1;
+    display: flex;
+    align-items: center;
+}
+
+.features-ancestry-mixed-input1 {
+    grid-area: features-ancestry-mixed-input1;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+}
+
+.features-ancestry-container {
+    padding-left: 20px;
+}
+
+.features-ancestry-name-input {
+    width: calc(50% - 5px);
+    margin-bottom: 5px;
+}
+
+.features-ancestry-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "features-ancestry-inputs-name features-ancestry-inputs-name features-ancestry-inputs-used-toggle .";
+    margin-bottom: 5px;
+}
+
+.features-ancestry-inputs-name {
+    grid-area: features-ancestry-inputs-name;
+}
+
+.features-ancestry-inputs-used-toggle {
+    grid-area: features-ancestry-inputs-used-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+input.toggle-ancestry0-used[value="hidden"] ~ div.features-ancestry-inputs-used-toggle,
+input.toggle-ancestry1-used[value="hidden"] ~ div.features-ancestry-inputs-used-toggle {
+    display: none;
+}
+
+input.toggle-ancestry0-used:not([value="active"]) ~ div.features-ancestry-inputs-used-toggle > button.fake-checkbox > span.checked,
+input.toggle-ancestry1-used:not([value="active"]) ~ div.features-ancestry-inputs-used-toggle > button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+.features-community-container {
+    padding-left: 20px;
+}
+
+.features-community-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "features-community-inputs-name features-community-inputs-name features-community-inputs-used-toggle features-community-inputs-tokens-toggle";
+    margin-bottom: 5px;
+}
+
+.features-community-inputs-name {
+    grid-area: features-community-inputs-name;
+}
+
+.features-community-inputs-used-toggle {
+    grid-area: features-community-inputs-used-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.features-community-inputs-tokens-toggle {
+    grid-area: features-community-inputs-tokens-toggle;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+input.toggle-used:not([value="active"]) ~ div.features-community-inputs-used-toggle > button.fake-checkbox > span.checked {
+    color: transparent;
+}
+
+input.toggle-used[value="hidden"] ~ div.features-community-inputs-used-toggle,
+input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggle {
+    display: none;
+}
+
+/* DUALITY ROLL TEMPLATE STYLING */
+.sheet-rolltemplate-duality {
+    margin-left: -30px;
+    background-color: white;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-container {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-hope > .inlinerollresult {
+    color: purple;
+    background-color: yellow;
+    border: 2px solid yellow;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-fear > .inlinerollresult {
+    color: yellow;
+    background-color: purple;
+    border: 2px solid purple;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-modifier > .inlinerollresult {
+    background-color: transparent;
+    border: 2px solid transparent;
+    pointer-events: none;
+    padding: 0;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-adv > .inlinerollresult {
+    background-color: lightgray;
+    border: 2px solid lightgray;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-total > .sheet-total > .inlinerollresult {
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    pointer-events: none;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-name {
+    grid-area: sheet-duality-name;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-rolls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "sheet-duality-hope sheet-duality-fear sheet-duality-modifier";
+    margin: 10px 0;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-hope {
+    grid-area: sheet-duality-hope;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-fear {
+    grid-area: sheet-duality-fear;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-adv {
+    grid-area: sheet-duality-adv;
+    margin: 10px 0;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-total {
+    grid-area: sheet-duality-total;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.sheet-rolltemplate-duality .sheet-duality-condition {
+    font-weight: bold;
+}
+
+.sheet-rolltemplate-duality .sheet-hope {
+    text-shadow: 1px 1px 3px yellow;
+}
+
+.sheet-rolltemplate-duality .sheet-fear {
+    text-shadow: 1px 1px 3px purple;
+}
+
+/* DAMAGE ROLL TEMPLATE STYLING */
+.sheet-rolltemplate-damage {
+    margin-left: -30px;
+    background-color: white;
+}
+
+.sheet-rolltemplate-damage .sheet-damage-container {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.sheet-rolltemplate-damage .sheet-damage-name {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.sheet-rolltemplate-damage .sheet-damage-message {
+    margin-top: 7px;
+}
+
+.sheet-rolltemplate-damage .sheet-damage-total > .inlinerollresult {
+    background-color: lightgray;
+    border: 2px solid lightgray;
+}
+
+.sheet-rolltemplate-damage .sheet-damage-total {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
