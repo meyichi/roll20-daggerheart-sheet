@@ -1082,7 +1082,8 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
     border: 2px solid purple;
 }
 
-.sheet-rolltemplate-duality .sheet-duality-modifier > .inlinerollresult {
+.sheet-rolltemplate-duality .sheet-duality-trait > .inlinerollresult,
+.sheet-rolltemplate-duality .sheet-duality-mod > .inlinerollresult {
     background-color: transparent;
     border: 2px solid transparent;
     pointer-events: none;
@@ -1109,8 +1110,8 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .sheet-rolltemplate-duality .sheet-duality-rolls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "sheet-duality-hope sheet-duality-fear sheet-duality-modifier";
-    margin: 10px 0;
+    grid-template-areas: "sheet-duality-hope sheet-duality-fear sheet-duality-trait";
+    margin-top: 10px;
 }
 
 .sheet-rolltemplate-duality .sheet-duality-hope {
@@ -1121,15 +1122,25 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
     grid-area: sheet-duality-fear;
 }
 
+.sheet-rolltemplate-duality .sheet-duality-trait {
+    grid-area: sheet-duality-trait
+}
+
+.sheet-rolltemplate-duality .sheet-duality-modifiers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.sheet-rolltemplate-duality .sheet-duality-mod {
+    margin-top: 5px;
+}
+
 .sheet-rolltemplate-duality .sheet-duality-adv {
-    grid-area: sheet-duality-adv;
-    margin: 10px 0;
+    margin-top: 5px;
 }
 
 .sheet-rolltemplate-duality .sheet-duality-total {
-    grid-area: sheet-duality-total;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: 5px 0;
 }
 
 .sheet-rolltemplate-duality .sheet-duality-condition {

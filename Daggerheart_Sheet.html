@@ -929,7 +929,7 @@
 <rolltemplate class="sheet-rolltemplate-duality">
     <div class="sheet-duality-container">
         <div class="sheet-duality-name">
-            <h3>{{name}}</h3>
+            <h3>Duality - {{name}}</h3>
         </div>
         <div class="sheet-duality-rolls">
             <div class="sheet-duality-hope no-top">
@@ -938,19 +938,30 @@
             <div class="sheet-duality-fear no-top">
                 Fear: {{fearDie}}
             </div>
-            <div class="sheet-duality-modifier no-top">
-                Modifier:
-                {{#rollGreater() modifier 0}}
+            <div class="sheet-duality-trait no-top">
+                Trait:
+                {{#rollGreater() trait 0}}
                     <b>+</b>
-                {{/rollGreater() modifier 0}}
-                {{modifier}}
+                {{/rollGreater() trait 0}}
+                {{trait}}
             </div>
         </div>
-        {{#withAdv}}
-        <div class="sheet-duality-adv">
-            {{withAdv}}: {{adv}}
+        <div class="sheet-duality-modifiers">
+            {{#^rollTotal() mod 0}}
+                <div class="sheet-duality-mod">
+                    Modifier:
+                    {{#rollGreater() mod 0}}
+                        <b>+</b>
+                    {{/rollGreater() mod 0}}
+                    {{mod}}
+                </div>
+            {{/^rollTotal() mod 0}}
+            {{#withAdv}}
+                <div class="sheet-duality-adv">
+                    {{withAdv}}: {{adv}}
+                </div>
+            {{/withAdv}}
         </div>
-        {{/withAdv}}
         <div class="sheet-duality-total">
             Total: <span class="sheet-total">{{computed::result}}</span>
             {{#rollTotal() hopeDie fearDie}}
@@ -1194,47 +1205,47 @@
             template: "duality",
             button: "agility",
             modifier: "Agility",
-            name: "Duality - Agility"
+            name: "Agility"
         }, {
             template: "duality",
             button: "strength",
             modifier: "Strength",
-            name: "Duality - Strength"
+            name: "Strength"
         }, {
             template: "duality",
             button: "finesse",
             modifier: "Finesse",
-            name: "Duality - Finesse"
+            name: "Finesse"
         }, {
             template: "duality",
             button: "instinct",
             modifier: "Instinct",
-            name: "Duality - Instinct"
+            name: "Instinct"
         }, {
             template: "duality",
             button: "presence",
             modifier: "Presence",
-            name: "Duality - Presence"
+            name: "Presence"
         }, {
             template: "duality",
             button: "knowledge",
             modifier: "Knowledge",
-            name: "Duality - Knowledge"
+            name: "Knowledge"
         }, {
             template: "duality",
             button: "weapon_primary_hit",
             modifier: "Weapon_primary_hit",
-            name: "Duality - Primary Weapon"
+            name: "Primary Weapon"
+        }, {
+            template: "duality",
+            button: "weapon_secondary_hit",
+            modifier: "Weapon_secondary_hit",
+            name: "Secondary Weapon"
         }, {
             template: "damage",
             button: "weapon_primary_damage",
             toggle: "primary",
             name: "Damage - Primary Weapon"
-        }, {
-            template: "duality",
-            button: "weapon_secondary_hit",
-            modifier: "Weapon_secondary_hit",
-            name: "Duality - Secondary Weapon"
         }, {
             template: "damage",
             button: "weapon_secondary_damage",
@@ -1273,12 +1284,13 @@
         on(`clicked:${rollButton.button}`, function() {
             if (rollButton.template === "duality") {
                 getAttrs([rollButton.modifier], (values) => {
-                    startRoll("!{{ask=[[?{Advantage or Disadvantage?|None,0|Advantage,1|Disadvantage,-1}]]}}", (response) => {
-                        const answer = response.results.ask.result;
+                    startRoll("!{{ask1=[[?{Advantage or Disadvantage?|None,0|Advantage,1|Disadvantage,-1}]]}} {{ask2=[[?{Modifier?|0}]]}}", (response) => {
+                        const answer = response.results.ask1.result;
+                        const mod = response.results.ask2.result;
                         if (answer === 0) { // Without Advantage or Disadvantage
                             startRoll(`&{template:duality} {{name=${rollButton.name}}} {{hopeDie=[[1d12]]}} {{fearDie=[[1d12]]}} `
-                                + `{{result=[[0]]}} {{modifier=[[${values[rollButton.modifier]}]]}}`, (roll) => {
-                                    const total = roll.results.hopeDie.result + roll.results.fearDie.result + Number(values[rollButton.modifier]);
+                                + `{{result=[[0]]}} {{trait=[[${values[rollButton.modifier]}]]}} {{mod=[[${mod}]]}}`, (roll) => {
+                                    const total = roll.results.hopeDie.result + roll.results.fearDie.result + Number(values[rollButton.modifier]) + mod;
 
                                     finishRoll(roll.rollId, {
                                         result: total
@@ -1286,8 +1298,8 @@
                                 });
                         } else if (answer === 1) { // With Advantage
                             startRoll(`&{template:duality} {{name=${rollButton.name}}} {{hopeDie=[[1d12]]}} {{fearDie=[[1d12]]}} `
-                                + `{{result=[[0]]}} {{modifier=[[${values[rollButton.modifier]}]]}} {{adv=[[1d6]]}} {{withAdv=Advantage}}`, (roll) => {
-                                    const total = roll.results.hopeDie.result + roll.results.fearDie.result + roll.results.adv.result + Number(values[rollButton.modifier]);
+                                + `{{result=[[0]]}} {{trait=[[${values[rollButton.modifier]}]]}} {{mod=[[${mod}]]}} {{adv=[[1d6]]}} {{withAdv=Advantage}}`, (roll) => {
+                                    const total = roll.results.hopeDie.result + roll.results.fearDie.result + roll.results.adv.result + Number(values[rollButton.modifier]) + mod;
 
                                     finishRoll(roll.rollId, {
                                         result: total
@@ -1295,8 +1307,8 @@
                                 });
                         } else { // With Disadvantage
                             startRoll(`&{template:duality} {{name=${rollButton.name}}} {{hopeDie=[[1d12]]}} {{fearDie=[[1d12]]}} `
-                                + `{{result=[[0]]}} {{modifier=[[${values[rollButton.modifier]}]]}} {{adv=[[1d6]]}} {{withAdv=Disadvantage}}`, (roll) => {
-                                    const total = roll.results.hopeDie.result + roll.results.fearDie.result - roll.results.adv.result + Number(values[rollButton.modifier]);
+                                + `{{result=[[0]]}} {{trait=[[${values[rollButton.modifier]}]]}} {{mod=[[${mod}]]}} {{adv=[[1d6]]}} {{withAdv=Disadvantage}}`, (roll) => {
+                                    const total = roll.results.hopeDie.result + roll.results.fearDie.result - roll.results.adv.result + Number(values[rollButton.modifier]) + mod;
                                     
                                     finishRoll(roll.rollId, {
                                         result: total
