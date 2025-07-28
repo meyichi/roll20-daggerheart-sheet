@@ -18,7 +18,8 @@
     </div>
     <div class="header-ancestry-input">
         <select name="attr_ancestry">
-            <option value="clank" selected="selected">Clank</option>
+            <option value="custom" selected="true"></option>
+            <option value="clank">Clank</option>
             <option value="drakona">Drakona</option>
             <option value="dwarf">Dwarf</option>
             <option value="elf">Elf</option>
@@ -45,7 +46,8 @@
     </div>
     <div class="header-community-input">
         <select name="attr_community">
-            <option value="highborne" selected="selected">Highborne</option>
+            <option value="custom" selected="true"></option>
+            <option value="highborne">Highborne</option>
             <option value="loreborne">Loreborne</option>
             <option value="orderborne">Orderborne</option>
             <option value="ridgeborne">Ridgeborne</option>
@@ -63,7 +65,8 @@
     </div>
     <div class="header-class-input">
         <select name="attr_class">
-            <option value="bard" selected="selected">Bard</option>
+            <option value="custom" selected="true"></option>
+            <option value="bard">Bard</option>
             <option value="druid">Druid</option>
             <option value="guardian">Guardian</option>
             <option value="ranger">Ranger</option>
@@ -116,6 +119,13 @@
                 <option value="18">Custom Subclass</option>
         </select>
     </div>
+</div>
+
+<!-- RESET BUTTONS -->
+<div class="reset-container">
+    <button type="action" class="reset-short-rest-button" name="act_short_rest">Short Rest</button>
+    <button type="action" class="reset-long-rest-button" name="act_long_rest">Long Rest</button>
+    <button type="action" class="reset-session-button" name="act_session_reset">Session Reset</button>
 </div>
 
 <!-- TRAITS -->
@@ -658,6 +668,7 @@
                 <div class="features-class-inputs">
                     <input type="text" class="features-class-inputs-name" name="attr_feature_class0_name">
                     <input type="hidden" class="toggle-used" name="attr_feature_class0_used_toggle" value="inactive">
+                    <input type="hidden" class="toggle-refresh" name="attr_feature_class0_used_refresh" value="never">
                     <div class="features-class-inputs-used-toggle no-top">
                         <span>Used: </span>
                         <button type="action" class="fake-checkbox" name="act_feature_class0_used_slot">
@@ -677,6 +688,7 @@
                 <div class="features-class-inputs">
                     <input type="text" class="features-class-inputs-name" name="attr_feature_class1_name">
                     <input type="hidden" class="toggle-used" name="attr_feature_class1_used_toggle" value="inactive">
+                    <input type="hidden" class="toggle-refresh" name="attr_feature_class1_used_refresh" value="never">
                     <div class="features-class-inputs-used-toggle no-top">
                         <span>Used: </span>
                         <button type="action" class="fake-checkbox" name="act_feature_class1_used_slot">
@@ -696,6 +708,7 @@
                 <div class="features-class-inputs">
                     <input type="text" class="features-class-inputs-name" name="attr_feature_class2_name">
                     <input type="hidden" class="toggle-used" name="attr_feature_class2_used_toggle" value="inactive">
+                    <input type="hidden" class="toggle-refresh" name="attr_feature_class2_used_refresh" value="never">
                     <div class="features-class-inputs-used-toggle no-top">
                         <span>Used: </span>
                         <button type="action" class="fake-checkbox" name="act_feature_class2_used_slot">
@@ -713,20 +726,70 @@
         </div>
 
         <h4>Subclass Features</h4>
+        <input type="hidden" class="toggle-subclass-multiclass" name="attr_feature_subclass_multiclass_toggle" value="inactive">
         <input type="hidden" class="toggle-subclass-specialized" name="attr_feature_subclass_specialized_toggle" value="inactive">
         <input type="hidden" class="toggle-subclass-mastered" name="attr_feature_subclass_mastered_toggle" value="inactive">
+        <input type="hidden" class="toggle-multiclass-specialized" name="attr_feature_multiclass_specialized_toggle" value="hidden">
         <div class="features-subclass-header">
-            <div class="features-subclass-header-specialized-toggle no-top">
+            <div class="features-subclass-header-multiclass-toggle">
+                <span>Multiclass: </span>
+                <button type="action" class="fake-checkbox" name="act_feature_subclass_multiclass_slot">
+                    <span class="checked">✖</span>
+                </button>
+            </div>
+            <div class="features-subclass-header-multiclass-dropdown">
+                <select class="subclassSelect" name="attr_multiclass">
+                    <option value="18" selected="true"></option>
+                    <option disabled="true">Bard</option>
+                        <option value="0">Troubadour</option>
+                        <option value="1">Wordsmith</option>
+                    <option disabled="true">Druid</option>
+                        <option value="2">Warden of the Elements</option>
+                        <option value="3">Warden of Renewal</option>
+                    <option disabled="true">Guardian</option>
+                        <option value="4">Stalwart</option>
+                        <option value="5">Vengeance</option>
+                    <option disabled="true">Ranger</option>
+                        <option value="6">Beastbound</option>
+                        <option value="7">Wayfinder</option>
+                    <option disabled="true">Rogue</option>
+                        <option value="8">Nightwalker</option>
+                        <option value="9">Syndicate</option>
+                    <option disabled="true">Seraph</option>
+                        <option value="10">Divine Wielder</option>
+                        <option value="11">Winged Sentinel</option>
+                    <option disabled="true">Sorcerer</option>
+                        <option value="12">Elemental Origin</option>
+                        <option value="13">Primal Origin</option>
+                    <option disabled="true">Warrior</option>
+                        <option value="14">Call of the Brave</option>
+                        <option value="15">Call of the Slayer</option>
+                    <option disabled="true">Wizard</option>
+                        <option value="16">School of Knowledge</option>
+                        <option value="17">School of War</option>
+                    <option disabled="true">Custom</option>
+                        <option value="18">Custom Subclass</option>
+                </select>
+            </div>
+            <div class="features-subclass-header-specialized-toggle">
                 <span>Specialized: </span>
                 <button type="action" class="fake-checkbox" name="act_feature_subclass_specialized_slot">
                     <span class="checked">✖</span>
                 </button>
             </div>
-            <div class="features-subclass-header-mastered-toggle no-top">
-                <span>Mastered: </span>
-                <button type="action" class="fake-checkbox" name="act_feature_subclass_mastered_slot">
-                    <span class="checked">✖</span>
-                </button>
+            <div class="features-subclass-header-mastered-toggle">
+                <div class="features-subclass-header-mastered-toggle-container">
+                    <span>Mastered: </span>
+                    <button type="action" class="fake-checkbox" name="act_feature_subclass_mastered_slot">
+                        <span class="checked">✖</span>
+                    </button>
+                </div>
+                <div class="features-subclass-header-multiclass-specialized">
+                    <span>Multiclass Specialized: </span>
+                    <button type="action" class="fake-checkbox" name="act_feature_multiclass_specialized_slot">
+                        <span class="checked">✖</span>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="features-subclass">
@@ -739,6 +802,7 @@
                 <div class="features-subclass-inputs">
                     <input type="text" class="features-subclass-inputs-name" name="attr_feature_subclass_foundation0_name">
                     <input type="hidden" class="toggle-used" name="attr_feature_subclass_foundation0_used_toggle" value="inactive">
+                    <input type="hidden" class="toggle-refresh" name="attr_feature_subclass_foundation0_used_refresh" value="never">
                     <div class="features-subclass-inputs-used-toggle no-top">
                         <span>Used: </span>
                         <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_foundation0_used_slot">
@@ -758,6 +822,7 @@
                 <div class="features-subclass-inputs">
                     <input type="text" class="features-subclass-inputs-name" name="attr_feature_subclass_foundation1_name">
                     <input type="hidden" class="toggle-used" name="attr_feature_subclass_foundation1_used_toggle" value="inactive">
+                    <input type="hidden" class="toggle-refresh" name="attr_feature_subclass_foundation1_used_refresh" value="never">
                     <div class="features-subclass-inputs-used-toggle no-top">
                         <span>Used: </span>
                         <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_foundation1_used_slot">
@@ -772,6 +837,7 @@
                     <div class="features-subclass-inputs">
                         <input type="text" class="features-subclass-inputs-name" name="attr_feature_subclass_specialization0_name">
                         <input type="hidden" class="toggle-used" name="attr_feature_subclass_specialization0_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_subclass_specialization0_used_refresh" value="never">
                         <div class="features-subclass-inputs-used-toggle no-top">
                             <span>Used: </span>
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_specialization0_used_slot">
@@ -786,6 +852,7 @@
                     <div class="features-subclass-inputs">
                         <input type="text" class="features-subclass-inputs-name" name="attr_feature_subclass_specialization1_name">
                         <input type="hidden" class="toggle-used" name="attr_feature_subclass_specialization1_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_subclass_specialization0_used_refresh" value="never">
                         <div class="features-subclass-inputs-used-toggle no-top">
                             <span>Used: </span>
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_specialization1_used_slot">
@@ -796,11 +863,79 @@
                     <textarea class="features-big-textarea" name="attr_feature_subclass_specialization1_desc"></textarea>
                 </div>
             </div>
+            <div class="features-subclass-multiclass-container">
+                <div class="features-multiclass-foundation0">
+                    <div class="features-subclass-inputs">
+                        <input type="text" class="features-subclass-inputs-name" name="attr_feature_multiclass_foundation0_name">
+                        <input type="hidden" class="toggle-used" name="attr_feature_multiclass_foundation0_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_multiclass_foundation0_used_refresh" value="never">
+                        <div class="features-subclass-inputs-used-toggle no-top">
+                            <span>Used: </span>
+                            <button type="action" class="fake-checkbox margin-left" name="act_feature_multiclass_foundation0_used_slot">
+                                <span class="checked">✖</span>
+                            </button>
+                        </div>
+                        <input type="hidden" class="toggle-tokens" name="attr_feature_multiclass_foundation0_tokens_toggle" value="inactive">
+                        <div class="features-subclass-inputs-tokens-toggle no-top">
+                            <span>Tokens: </span>
+                            <input type="number" name="attr_feature_multiclass_foundation0_tokens" min="0">
+                        </div>
+                    </div>
+                    <textarea class="features-big-textarea" name="attr_feature_multiclass_foundation0_desc"></textarea>
+                </div>
+                <input type="hidden" class="toggle-multiclass-foundation1" name="attr_feature_multiclass_foundation1_toggle" value="shown">
+                <div class="features-multiclass-foundation1">
+                    <div class="features-subclass-inputs">
+                        <input type="text" class="features-subclass-inputs-name" name="attr_feature_multiclass_foundation1_name">
+                        <input type="hidden" class="toggle-used" name="attr_feature_multiclass_foundation1_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_multiclass_foundation1_used_refresh" value="never">
+                        <div class="features-subclass-inputs-used-toggle no-top">
+                            <span>Used: </span>
+                            <button type="action" class="fake-checkbox margin-left" name="act_feature_multiclass_foundation1_used_slot">
+                                <span class="checked">✖</span>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea class="features-big-textarea" name="attr_feature_multiclass_foundation1_desc"></textarea>
+                </div>
+            </div>
+            <div class="features-subclass-multiclass-specialization-container">
+                <div class="features-multiclass-specialization0">
+                    <div class="features-subclass-inputs">
+                        <input type="text" class="features-subclass-inputs-name" name="attr_feature_multiclass_specialization0_name">
+                        <input type="hidden" class="toggle-used" name="attr_feature_multiclass_specialization0_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_multiclass_specialization0_used_refresh" value="never">
+                        <div class="features-subclass-inputs-used-toggle no-top">
+                            <span>Used: </span>
+                            <button type="action" class="fake-checkbox margin-left" name="act_feature_multiclass_specialization0_used_slot">
+                                <span class="checked">✖</span>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea class="features-big-textarea" name="attr_feature_multiclass_specialization0_desc"></textarea>
+                </div>
+                <input type="hidden" class="toggle-multiclass-specialization1" name="attr_feature_multiclass_specialization1_toggle" value="shown">
+                <div class="features-multiclass-specialization1">
+                    <div class="features-subclass-inputs">
+                        <input type="text" class="features-subclass-inputs-name" name="attr_feature_multiclass_specialization1_name">
+                        <input type="hidden" class="toggle-used" name="attr_feature_multiclass_specialization1_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_multiclass_specialization1_used_refresh" value="never">
+                        <div class="features-subclass-inputs-used-toggle no-top">
+                            <span>Used: </span>
+                            <button type="action" class="fake-checkbox margin-left" name="act_feature_multiclass_specialization1_used_slot">
+                                <span class="checked">✖</span>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea class="features-big-textarea" name="attr_feature_multiclass_specialization1_desc"></textarea>
+                </div>
+            </div>
             <div class="features-subclass-mastery-container">
                 <div class="features-subclass-mastery0 no-top">
                     <div class="features-subclass-inputs">
                         <input type="text" class="features-subclass-inputs-name" name="attr_feature_subclass_mastery0_name">
                         <input type="hidden" class="toggle-used" name="attr_feature_subclass_mastery0_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_subclass_mastery0_used_refresh" value="never">
                         <div class="features-subclass-inputs-used-toggle no-top">
                             <span>Used: </span>
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_mastery0_used_slot">
@@ -815,6 +950,7 @@
                     <div class="features-subclass-inputs">
                         <input type="text" class="features-subclass-inputs-name" name="attr_feature_subclass_mastery1_name">
                         <input type="hidden" class="toggle-used" name="attr_feature_subclass_mastery1_used_toggle" value="inactive">
+                        <input type="hidden" class="toggle-refresh" name="attr_feature_subclass_mastery1_used_refresh" value="never">
                         <div class="features-subclass-inputs-used-toggle no-top">
                             <span>Used: </span>
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_mastery1_used_slot">
@@ -881,6 +1017,7 @@
             <div class="features-ancestry-inputs no-top">
                 <input type="text" class="features-ancestry-inputs-name" name="attr_feature_ancestry0_name">
                 <input type="hidden" class="toggle-ancestry0-used" name="attr_feature_ancestry0_used_toggle" value="inactive">
+                <input type="hidden" class="toggle-used" name="attr_feature_ancestry0_used_refresh" value="never">
                 <div class="features-ancestry-inputs-used-toggle no-top">
                     <span>Used: </span>
                     <button type="action" class="fake-checkbox margin-left" name="act_feature_ancestry0_used_slot">
@@ -894,6 +1031,7 @@
             <div class="features-ancestry-inputs no-top">
                 <input type="text" class="features-ancestry-inputs-name" name="attr_feature_ancestry1_name">
                 <input type="hidden" class="toggle-ancestry1-used" name="attr_feature_ancestry1_used_toggle" value="inactive">
+                <input type="hidden" class="toggle-refresh" name="attr_feature_ancestry1_used_refresh" value="never">
                 <div class="features-ancestry-inputs-used-toggle no-top">
                     <span>Used: </span>
                     <button type="action" class="fake-checkbox margin-left" name="act_feature_ancestry1_used_slot">
@@ -909,6 +1047,7 @@
             <div class="features-community-inputs">
                 <input type="text" class="features-community-inputs-name" name="attr_feature_community_name">
                 <input type="hidden" class="toggle-used" name="attr_feature_community_used_toggle" value="inactive">
+                <input type="hidden" class="toggle-refresh" name="attr_feature_community_used_refresh" value="never">
                 <div class="features-community-inputs-used-toggle no-top">
                     <span>Used: </span>
                     <button type="action" class="fake-checkbox margin-left" name="act_feature_community_used_slot">
@@ -1144,15 +1283,28 @@
         }, {
             type: "feature",
             slot: "feature_class0_used_slot",
-            toggle: "Feature_class0_used_toggle"
+            toggle: "Feature_class0_used_toggle",
+            refresh: "Feature_class0_used_refresh"
         }, {
             type: "feature",
             slot: "feature_class1_used_slot",
-            toggle: "Feature_class1_used_toggle"
+            toggle: "Feature_class1_used_toggle",
+            refresh: "Feature_class1_used_refresh",
+            name: "Feature_class1_name"
         }, {
             type: "feature",
             slot: "feature_class2_used_slot",
-            toggle: "Feature_class2_used_toggle"
+            toggle: "Feature_class2_used_toggle",
+            refresh: "Feature_class2_used_refresh",
+            name: "Feature_class2_name"
+        }, {
+            type: "feature",
+            slot: "feature_subclass_multiclass_slot",
+            toggle: "Feature_subclass_multiclass_toggle"
+        }, {
+            type: "feature",
+            slot: "feature_multiclass_specialized_slot",
+            toggle: "Feature_multiclass_specialized_toggle"
         }, {
             type: "feature",
             slot: "feature_subclass_specialized_slot",
@@ -1164,39 +1316,81 @@
         }, {
             type: "feature",
             slot: "feature_subclass_foundation0_used_slot",
-            toggle: "Feature_subclass_foundation0_used_toggle"
+            toggle: "Feature_subclass_foundation0_used_toggle",
+            refresh: "Feature_subclass_foundation0_used_refresh",
+            name: "Feature_subclass_foundation0_name"
         }, {
             type: "feature",
             slot: "feature_subclass_foundation1_used_slot",
-            toggle: "Feature_subclass_foundation1_used_toggle"
+            toggle: "Feature_subclass_foundation1_used_toggle",
+            refresh: "Feature_subclass_foundation1_used_refresh",
+            name: "Feature_subclass_foundation1_name"
         }, {
             type: "feature",
             slot: "feature_subclass_specialization0_used_slot",
-            toggle: "Feature_subclass_specialization0_used_toggle"
+            toggle: "Feature_subclass_specialization0_used_toggle",
+            refresh: "Feature_subclass_specialization0_used_refresh",
+            name: "Feature_subclass_specialization0_name"
         }, {
             type: "feature",
             slot: "feature_subclass_specialization1_used_slot",
-            toggle: "Feature_subclass_specialization1_used_toggle"
+            toggle: "Feature_subclass_specialization1_used_toggle",
+            refresh: "Feature_subclass_specialization1_used_refresh",
+            name: "Feature_subclass_specialization1_name"
+        }, {
+            type: "feature",
+            slot: "feature_multiclass_foundation0_used_slot",
+            toggle: "Feature_multiclass_foundation0_used_toggle",
+            refresh: "Feature_multiclass_foundation0_used_refresh",
+            name: "Feature_multiclass_foundation0_name"
+        }, {
+            type: "feature",
+            slot: "feature_multiclass_foundation1_used_slot",
+            toggle: "Feature_multiclass_foundation1_used_toggle",
+            refresh: "Feature_multiclass_foundation1_used_refresh",
+            name: "Feature_multiclass_foundation1_name"
+        }, {
+            type: "feature",
+            slot: "feature_multiclass_specialization0_used_slot",
+            toggle: "Feature_multiclass_specialization0_used_toggle",
+            refresh: "Feature_multiclass_specialization0_used_refresh",
+            name: "Feature_multiclass_specialization0_name"
+        }, {
+            type: "feature",
+            slot: "feature_multiclass_specialization1_used_slot",
+            toggle: "Feature_multiclass_specialization1_used_toggle",
+            refresh: "Feature_multiclass_specialization1_used_refresh",
+            name: "Feature_multiclass_specialization1_name"
         }, {
             type: "feature",
             slot: "feature_subclass_mastery0_used_slot",
-            toggle: "Feature_subclass_mastery0_used_toggle"
+            toggle: "Feature_subclass_mastery0_used_toggle",
+            refresh: "Feature_subclass_mastery0_used_refresh",
+            name: "Feature_subclass_mastery0_name"
         }, {
             type: "feature",
             slot: "feature_subclass_mastery1_used_slot",
-            toggle: "Feature_subclass_mastery1_used_toggle"
+            toggle: "Feature_subclass_mastery1_used_toggle",
+            refresh: "Feature_subclass_mastery1_used_refresh",
+            name: "Feature_subclass_mastery1_name"
         }, {
             type: "feature",
             slot: "feature_ancestry0_used_slot",
-            toggle: "Feature_ancestry0_used_toggle"
+            toggle: "Feature_ancestry0_used_toggle",
+            refresh: "Feature_ancestry0_used_refresh",
+            name: "Feature_ancestry0_name"
         }, {
             type: "feature",
             slot: "feature_ancestry1_used_slot",
-            toggle: "Feature_ancestry1_used_toggle"
+            toggle: "Feature_ancestry1_used_toggle",
+            refresh: "Feature_ancestry1_used_refresh",
+            name: "Feature_ancestry1_name"
         }, {
             type: "feature",
             slot: "feature_community_used_slot",
-            toggle: "Feature_community_used_toggle"
+            toggle: "Feature_community_used_toggle",
+            refresh: "Feature_community_used_refresh",
+            name: "Feature_community_name"
         }
     ];
 
@@ -1252,7 +1446,7 @@
             toggle: "secondary",
             name: "Damage - Secondary Weapon"
         }
-    ]
+    ];
 
     /* Listeners for each slot */
     slotToggles.forEach((pair) => {
@@ -1331,6 +1525,204 @@
         });
     });
 
+    /* Resets all used toggles applicable for short rest */
+    const shortRest = function() {
+        const featureUsedToggles = [];
+        const featureRefreshToggles = [];
+        const featureNames = [];
+        slotToggles.forEach((obj) => {
+            if (obj.hasOwnProperty("refresh")) {
+                featureUsedToggles.push(obj.toggle);
+                featureRefreshToggles.push(obj.refresh);
+                featureNames.push(obj.name);
+            }
+        });
+        getSectionIDs("repeating_domain", ids => {
+            const domainShortRestToggles = [];
+            const domainUsedToggles = [];
+            const domainNames = [];
+            ids.forEach((id) => {
+                domainShortRestToggles.push(`repeating_domain_${id}_domain_effect_shortrest_toggle`);
+                domainUsedToggles.push(`repeating_domain_${id}_domain_effect_used_toggle`);
+                domainNames.push(`repeating_domain_${id}_domain_effect_name`);
+            });
+            const allToggles = [...featureUsedToggles, ...featureRefreshToggles, ...featureNames, ...domainUsedToggles, ...domainShortRestToggles, ...domainNames];
+            getAttrs(allToggles, function(values) {
+                const needsToggled = [];
+                var anyToggle = false;
+                domainShortRestToggles.forEach((toggle, i) => {
+                    if (values[toggle] === "active" && values[domainUsedToggles[i]] === "active") {
+                        needsToggled.push({
+                            type: "domain",
+                            name: values[domainNames[i]],
+                            toggle: domainUsedToggles[i]
+                        });
+                        anyToggle = true;
+                    }
+                });
+                featureUsedToggles.forEach((toggle, i) => {
+                    if (values[toggle] === "active" && (values[featureRefreshToggles[i]] === "short" || values[featureRefreshToggles[i]] === "rest")) {
+                        needsToggled.push({
+                            type: "feature",
+                            name: values[featureNames[i]],
+                            toggle: featureUsedToggles[i]
+                        });
+                        anyToggle = true;
+                    }
+                });
+                const toggleString = needsToggled.map(obj => {
+                    return `${obj.type.charAt(0).toUpperCase() + obj.type.slice(1)} - ${obj.name}`;
+                }).join(", ");
+                var confirmString = "";
+                if (anyToggle)
+                    confirmString = `!{{ask=[[?{The following actions will be reset: ${toggleString}|Cancel,0|Confirm,1}]]}}`;
+                else
+                    confirmString = `!{{ask=[[?{No actions will be reset|Cancel,0|Confirm,1}]]}}`;
+                startRoll(confirmString, (response) => {
+                    if (response.results.ask.result) {
+                        const activeToggles = {};
+                        needsToggled.forEach((toggle) => {
+                            activeToggles[toggle.toggle] = "inactive";
+                        });
+                        setAttrs(activeToggles);
+                    }
+                });
+            });
+        });
+    }
+
+    /* Resets all used toggles applicable for long rest */
+    const longRest = function() {
+        const featureUsedToggles = [];
+        const featureRefreshToggles = [];
+        const featureNames = [];
+        slotToggles.forEach((obj) => {
+            if (obj.hasOwnProperty("refresh")) {
+                featureUsedToggles.push(obj.toggle);
+                featureRefreshToggles.push(obj.refresh);
+                featureNames.push(obj.name);
+            }
+        });
+        getSectionIDs("repeating_domain", ids => {
+            const domainLongRestToggles = [];
+            const domainUsedToggles = [];
+            const domainNames = [];
+            ids.forEach((id) => {
+                domainLongRestToggles.push(`repeating_domain_${id}_domain_effect_longrest_toggle`);
+                domainUsedToggles.push(`repeating_domain_${id}_domain_effect_used_toggle`);
+                domainNames.push(`repeating_domain_${id}_domain_effect_name`);
+            });
+            const allToggles = [...featureUsedToggles, ...featureRefreshToggles, ...featureNames, ...domainUsedToggles, ...domainLongRestToggles, ...domainNames];
+            getAttrs(allToggles, function(values) {
+                const needsToggled = [];
+                var anyToggle = false;
+                domainLongRestToggles.forEach((toggle, i) => {
+                    if (values[toggle] === "active" && values[domainUsedToggles[i]] === "active") {
+                        needsToggled.push({
+                            type: "domain",
+                            name: values[domainNames[i]],
+                            toggle: domainUsedToggles[i]
+                        });
+                        anyToggle = true;
+                    }
+                });
+                featureUsedToggles.forEach((toggle, i) => {
+                    if (values[toggle] === "active" && (values[featureRefreshToggles[i]] === "long" || values[featureRefreshToggles[i]] === "rest")) {
+                        needsToggled.push({
+                            type: "feature",
+                            name: values[featureNames[i]],
+                            toggle: featureUsedToggles[i]
+                        });
+                        anyToggle = true;
+                    }
+                });
+                const toggleString = needsToggled.map(obj => {
+                    return `${obj.type.charAt(0).toUpperCase() + obj.type.slice(1)} - ${obj.name}`;
+                }).join(", ");
+                var confirmString = "";
+                if (anyToggle)
+                    confirmString = `!{{ask=[[?{The following actions will be reset: ${toggleString}|Cancel,0|Confirm,1}]]}}`;
+                else
+                    confirmString = `!{{ask=[[?{No actions will be reset|Cancel,0|Confirm,1}]]}}`;
+                startRoll(confirmString, (response) => {
+                    if (response.results.ask.result) {
+                        const activeToggles = {};
+                        needsToggled.forEach((toggle) => {
+                            activeToggles[toggle.toggle] = "inactive";
+                        });
+                        setAttrs(activeToggles);
+                    }
+                });
+            });
+        });
+    }
+
+    /* Resets all used toggles applicable for session reset */
+    const sessionReset = function() {
+        const featureUsedToggles = [];
+        const featureRefreshToggles = [];
+        const featureNames = [];
+        slotToggles.forEach((obj) => {
+            if (obj.hasOwnProperty("refresh")) {
+                featureUsedToggles.push(obj.toggle);
+                featureRefreshToggles.push(obj.refresh);
+                featureNames.push(obj.name);
+            }
+        });
+        getSectionIDs("repeating_domain", ids => {
+            const domainSessionResetToggles = [];
+            const domainUsedToggles = [];
+            const domainNames = [];
+            ids.forEach((id) => {
+                domainSessionResetToggles.push(`repeating_domain_${id}_domain_effect_session_toggle`);
+                domainUsedToggles.push(`repeating_domain_${id}_domain_effect_used_toggle`);
+                domainNames.push(`repeating_domain_${id}_domain_effect_name`);
+            });
+            const allToggles = [...featureUsedToggles, ...featureRefreshToggles, ...featureNames, ...domainUsedToggles, ...domainSessionResetToggles, ...domainNames];
+            getAttrs(allToggles, function(values) {
+                const needsToggled = [];
+                var anyToggle = false;
+                domainSessionResetToggles.forEach((toggle, i) => {
+                    if (values[toggle] === "active" && values[domainUsedToggles[i]] === "active") {
+                        needsToggled.push({
+                            type: "domain",
+                            name: values[domainNames[i]],
+                            toggle: domainUsedToggles[i]
+                        });
+                        anyToggle = true;
+                    }
+                });
+                featureUsedToggles.forEach((toggle, i) => {
+                    if (values[toggle] === "active" && values[featureRefreshToggles[i]] === "session") {
+                        needsToggled.push({
+                            type: "feature",
+                            name: values[featureNames[i]],
+                            toggle: featureUsedToggles[i]
+                        });
+                        anyToggle = true;
+                    }
+                });
+                const toggleString = needsToggled.map(obj => {
+                    return `${obj.type.charAt(0).toUpperCase() + obj.type.slice(1)} - ${obj.name}`;
+                }).join(", ");
+                var confirmString = "";
+                if (anyToggle)
+                    confirmString = `!{{ask=[[?{The following actions will be reset: ${toggleString}|Cancel,0|Confirm,1}]]}}`;
+                else
+                    confirmString = `!{{ask=[[?{No actions will be reset|Cancel,0|Confirm,1}]]}}`;
+                startRoll(confirmString, (response) => {
+                    if (response.results.ask.result) {
+                        const activeToggles = {};
+                        needsToggled.forEach((toggle) => {
+                            activeToggles[toggle.toggle] = "inactive";
+                        });
+                        setAttrs(activeToggles);
+                    }
+                });
+            });
+        });
+    }
+
     /* Populates Ancestry Features when Ancestry is selected */
     const populateAncestryFeatures = function(ancestry) {
         var ancestryFeatures = {};
@@ -1340,11 +1732,13 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Purposeful Design",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Decide who made you and for what purpose. At "
                         + "character creation, choose one of your Experiences that best aligns "
                         + "with this purpose and gain a permanent +1 bonus to it.",
                     Feature_ancestry1_name: "Efficient",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you take a short rest, you can choose a long "
                         + "rest move instead of a short rest move."
                 }
@@ -1354,11 +1748,13 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Scales",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Your scales act as natural protection. When you "
                         + "would take Severe damage, you can mark a Stress to mark 1 fewer Hit "
                         + "Points.",
                     Feature_ancestry1_name: "Elemental Breath",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Choose an element for your breath (such as "
                         + "electricity, fire, or ice). You can use this breath against a target or "
                         + "group of targets within Very Close range, treating it as an Instinct "
@@ -1370,10 +1766,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Thick Skin",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you take Minor damage, you can mark 2 Stress "
                         + "instead of marking a Hit Point.",
                     Feature_ancestry1_name: "Increased Fortitude",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Spend 3 Hope to halve incoming physical damage."
                 }
                 break;
@@ -1382,9 +1780,11 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Quick Reactions",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Mark a Stress to gain advantage on a reaction roll.",
                     Feature_ancestry1_name: "Celestial Trance",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "During a rest, you can drop into a trance to choose "
                         + "an additional downtime move."
                 }
@@ -1394,11 +1794,13 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Luckbender",
                     Feature_ancestry0_used_toggle: "inactive",
+                    Feature_ancestry0_used_refresh: "session",
                     Feature_ancestry0_desc: "Once per session, after you or a willing ally within "
                         + "Close range makes an action roll, you can spend 3 Hope to reroll the "
                         + "Duality Dice.",
                     Feature_ancestry1_name: "Wings",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "You can fly. While flying, you can mark a Stress "
                         + "after an adversary makes an attack against you to gain a +2 bonus to "
                         + "your Evasion against that attack."
@@ -1407,13 +1809,15 @@
             case "faun":
                 ancestryFeatures = {
                     Feature_ancestry_mixed_toggle: "hidden",
-                    Feature_ancestry0_name: "Carpine",
+                    Feature_ancestry0_name: "Caprine Leap",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You can leap anywhere within Close range as though "
                         + "you were using normal movement, allowing you to vault obstacles, jump "
                         + "across gaps, or scale barriers with ease.",
                     Feature_ancestry1_name: "Kick",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you succeed on an attack against a target "
                         + "within Melee range, you can mark a Stress to kick yourself off them, "
                         + "dealing an extra 2d6 damage and knocking back either yourself or the "
@@ -1425,12 +1829,14 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Charge",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you succeed on an Agility Roll to move from Far "
                         + "or Very Far range into Melee range with one or more targets, you can "
                         + "mark a Stress to deal 1d12 physical damage to all targets within Melee "
                         + "range.",
                     Feature_ancestry1_name: "Unshakable",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you would mark a Stress, roll a d6. On a result "
                         + "of 6, don't mark it."
                 }
@@ -1440,11 +1846,13 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Fungril Network",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Make an Instinct Roll (12) to use your mycelial "
                         + "array to speak with others of your ancestry. On a success, you can "
                         + "communicate across any distance.",
                     Feature_ancestry1_name: "Death Connection",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "While touching a corpse that died recently, you can "
                         + "mark a Stress to extract one memory from the corpse related to a "
                         + "specific emotion or sensation of your choice."
@@ -1455,10 +1863,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Shell",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Gain a bonus to your damage thresholds equal to your "
                         + "Proficiency.",
                     Feature_ancestry1_name: "Retract",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Mark a Stress to retract into your shell. While in "
                         + "your shell, you have resistance to physical damage, you have "
                         + " disadvantage on action rolls, and you can't move."
@@ -1469,10 +1879,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Endurance",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Gain an additional Hit Point slot at character "
                         + "creation.",
                     Feature_ancestry1_name: "Reach",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Treat any weapon, ability, spell, or other feature "
                         + "that has a Melee range as though it has a Very Close range instead."
                 }
@@ -1482,9 +1894,11 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Surefooted",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You ignore disadvantage on Agility Rolls.",
                     Feature_ancestry1_name: "Danger Sense",
                     Feature_ancestry1_used_toggle: "inactive",
+                    Feature_ancestry1_used_refresh: "rest",
                     Feature_ancestry1_desc: "Once per rest, mark a Stress to force an adversary "
                         + "to reroll an attack against you or an ally within Very Close range."
                 }
@@ -1494,10 +1908,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Luckbringer",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "At the start of each session, everyone in your party "
                         + "gains a Hope.",
                     Feature_ancestry1_name: "Internal Compass",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you roll a 1 on your Hope Die, you can reroll "
                         + "it."
                 }
@@ -1507,9 +1923,11 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "High Stamina",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Gain an additional Stress slot at character creation.",
                     Feature_ancestry1_name: "Adaptability",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you fail a roll that utilized one of your "
                         + "Experiences, you can mark a Stress to reroll."
                 }
@@ -1519,10 +1937,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Fearless",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you roll with Fear, you can mark 2 Stress to "
                         + "change it into a roll with Hope instead.",
                     Feature_ancestry1_name: "Dread Visage",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "You have advantage on rolls to intimidate hostile "
                         + "creatures."
                 }
@@ -1532,10 +1952,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Feline Instincts",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you make an Agility Roll, you can spend 2 Hope "
                         + "to reroll your Hope Die.",
                     Feature_ancestry1_name: "Retracting Claws",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Make an Agility Roll to scratch a target within "
                         + "Melee range. On a success, they become temporarily Vulnerable."
                 }
@@ -1545,10 +1967,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Sturdy",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you have 1 Hit Point remaining, attacks against "
                         + "you have disadvantage.",
                     Feature_ancestry1_name: "Tusks",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you succeed on an attack against a target "
                         + "within Melee range, you can spend a Hope to gore the target with your "
                         + "tusks, dealing an extra 1d6 damage."
@@ -1559,9 +1983,11 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Amphibious",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You can breathe and move naturally underwater.",
                     Feature_ancestry1_name: "Long Tongue",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "You can use your long tongue to grab onto things "
                         + "within Close range. Mark a Stress to use your tongue as a Finesse Close "
                         + "weapon that deals d12 physical damage using your Proficiency."
@@ -1572,10 +1998,12 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "Natural Climber",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You have advantage on Agility Rolls that involve "
                         + "balancing and climbing.",
                     Feature_ancestry1_name: "Nimble",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Gain a permanent +1 bonus to your Evasion at "
                         + "character creation."
                 }
@@ -1585,9 +2013,11 @@
                     Feature_ancestry_mixed_toggle: "shown",
                     Feature_ancestry0_name: "",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "",
                     Feature_ancestry1_name: "",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry1_desc: "",
                     Feature_ancestry_mixed0: "",
                     Feature_ancestry_mixed1: ""
@@ -1598,9 +2028,11 @@
                     Feature_ancestry_mixed_toggle: "hidden",
                     Feature_ancestry0_name: "",
                     Feature_ancestry0_used_toggle: "inactive",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "",
                     Feature_ancestry1_name: "",
                     Feature_ancestry1_used_toggle: "inactive",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry1_desc: ""
                 }
         }
@@ -1617,6 +2049,7 @@
                     Feature_community_desc: "You have advantage on rolls to consort with nobles, "
                         + "negotiate prices, or leverage your reputation to get what you want.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1626,6 +2059,7 @@
                     Feature_community_desc: "ou have advantage on rolls that involve the history, "
                         + "culture, or politics of a prominent person or place.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1637,6 +2071,7 @@
                         + "one of these principles through your current action, you can roll a d20 "
                         + "as your Hope Die.",
                     Feature_community_used_toggle: "inactive",
+                    Feature_community_used_refresh: "rest",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1647,6 +2082,7 @@
                         + "cliffs and ledges, navigate harsh environments, and use your survival "
                         + "knowledge.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1659,6 +2095,7 @@
                         + "spend any number of these tokens to gain a +1 bonus to the roll for "
                         + "each token spent. At the end of each session, clear all unspent tokens.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "shown"
                 }
                 break;
@@ -1668,6 +2105,7 @@
                     Feature_community_desc: "You have advantage on rolls to negotiate with "
                         + "criminals, detect lies, or find a safe place to hide.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1678,6 +2116,7 @@
                         + "shadow, you have advantage on rolls to hide, investigate, or perceive "
                         + "details within that area.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1689,6 +2128,7 @@
                         + "mundane item that's useful to your situation. Work with the GM to "
                         + "figure out what item you take out.",
                     Feature_community_used_toggle: "inactive",
+                    Feature_community_used_refresh: "session",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1698,6 +2138,7 @@
                     Feature_community_desc: "Your movement is naturally silent. You have advantage "
                         + "on rolls to move without being heard.",
                     Feature_community_used_toggle: "hidden",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "hidden"
                 }
                 break;
@@ -1706,6 +2147,7 @@
                     Feature_community_name: "",
                     Feature_community_desc: "",
                     Feature_community_used_toggle: "inactive",
+                    Feature_community_used_refresh: "never",
                     Feature_community_tokens_toggle: "shown"
                 }
         }
@@ -1882,6 +2324,7 @@
                         + "number of Stress equal to the result. At the end of each session, clear all "
                         + "unspent Rally Dice. At level 5, your Rally Die increases to a d8.",
                     Feature_class0_used_toggle: "inactive",
+                    Feature_class0_used_refresh: "session",
                     Feature_class0_tokens_toggle: "hidden",
                     Feature_class1_toggle: "hidden",
                     Feature_class2_toggle: "hidden"
@@ -1930,6 +2373,7 @@
                         + "• You add the current value of the Unstoppable Die to your damage roll.\n"
                         + "• You can't be Restrained or Vulnerable.",
                     Feature_class0_used_toggle: "inactive",
+                    Feature_class0_used_refresh: "long",
                     Feature_class0_tokens_toggle: "shown",
                     Feature_class1_toggle: "hidden",
                     Feature_class2_toggle: "hidden"
@@ -1947,6 +2391,7 @@
                     + "• When you fail an attack against them, you can end your Ranger's Focus "
                     + "feature to reroll your Duality Dice.",
                     Feature_class0_used_toggle: "inactive",
+                    Feature_class0_used_refresh: "never",
                     Feature_class0_tokens_toggle: "hidden",
                     Feature_class1_toggle: "hidden",
                     Feature_class2_toggle: "hidden"
@@ -2009,6 +2454,7 @@
                         + "• Enhance a spell that deals damage, gaining a bonus to your damage "
                         + "roll equal to twice the level of the card.",
                     Feature_class2_used_toggle: "inactive",
+                    Feature_class2_used_refresh: "long",
                     Feature_class2_tokens_toggle: "hidden"
                 };
                 break;
@@ -2058,11 +2504,18 @@
                     Feature_class0_name: "",
                     Feature_class0_desc: "",
                     Feature_class0_used_toggle: "inactive",
+                    Feature_class0_used_refresh: "never",
                     Feature_class0_tokens_toggle: "shown",
                     Feature_class1_toggle: "hidden",
                     Feature_class2_toggle: "hidden"
                 };
         }
+        if (classFeatures.Feature_class0_used_toggle === "hidden")
+            classFeatures["Feature_class0_used_refresh"] = "never";
+        if (classFeatures.Feature_class1_used_toggle === "hidden" || classFeatures.Feature_class1_toggle === "hidden")
+            classFeatures["Feature_class1_used_refresh"] = "never";
+        if (classFeatures.Feature_class2_used_toggle === "hidden" || classFeatures.Feature_class2_toggle === "hidden")
+            classFeatures["Feature_class2_used_refresh"] = "never";
         setAttrs(classFeatures);
     }
 
@@ -2134,6 +2587,7 @@
                     Feature_subclass_foundation0_desc: "Once per long rest, you can give a heartfelt, "
                         + "inspiring speech. All allies within Far range clear 2 Stress.",
                     Feature_subclass_foundation0_used_toggle: "inactive",
+                    Feature_subclass_foundation0_used_refresh: "long",
                     Feature_subclass_foundation0_tokens_toggle: "hidden",
                     Feature_subclass_foundation1_toggle: "shown",
                     Feature_subclass_foundation1_name: "Heart of a Poet",
@@ -2147,6 +2601,7 @@
                         + "• Help an Ally without spending Hope.\n"
                         + "• Give them an additional downtime move during their next rest.",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "session",
                     Feature_subclass_specialization1_toggle: "hidden",
                     Feature_subclass_mastery0_name: "Epic Poetry",
                     Feature_subclass_mastery0_desc: "Your Rally Die increases to a d10. Additionally, when "
@@ -2185,6 +2640,7 @@
                         + "• Air: When you or an ally takes damage from an attack beyond Melee "
                         + "range, reduce the damage by 1d8.",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "rest",
                     Feature_subclass_specialization1_toggle: "hidden",
                     Feature_subclass_mastery0_name: "Elemental Dominion",
                     Feature_subclass_mastery0_desc: "You further embody your element. While Channeling, you "
@@ -2210,6 +2666,7 @@
                         + "resting within the space, clear Stress equal to your Instinct, "
                         + "distributed as you choose between you and your allies.",
                     Feature_subclass_foundation0_used_toggle: "inactive",
+                    Feature_subclass_foundation0_used_refresh: "long",
                     Feature_subclass_foundation0_tokens_toggle: "hidden",
                     Feature_subclass_foundation1_toggle: "shown",
                     Feature_subclass_foundation1_name: "Regeneration",
@@ -2225,6 +2682,7 @@
                     Feature_subclass_specialization1_desc: "Once per long rest, spend 2 Hope to clear 2 Hit "
                         + "Points on 1d4 allies within Close range.",
                     Feature_subclass_specialization1_used_toggle: "inactive",
+                    Feature_subclass_specialization1_used_refresh: "long",
                     Feature_subclass_mastery0_name: "Defender",
                     Feature_subclass_mastery0_desc: "Your animal transformation embodies a healing guardian "
                         + "spirit. When you're in Beastform and an ally within Close range marks 2 "
@@ -2326,7 +2784,8 @@
                         + "would mark your companion's last Stress or your last Hit Point and "
                         + "you're within Close range of each other, you or your companion can rush "
                         + "to the other's side and take that damage instead.",
-                    Feature_subclass_mastery1_used_toggle: "inactive"
+                    Feature_subclass_mastery1_used_toggle: "inactive",
+                    Feature_subclass_mastery1_used_refresh: "long"
                 }
                 break;
             case "7": // Ranger - Wayfinder
@@ -2343,6 +2802,7 @@
                     Feature_subclass_foundation1_desc: "When you're traveling to a place you've previously "
                         + "visited or you carry an object that has been at the location before, "
                         + "you can identify the shortest, most direct path to your destination.",
+                    Feature_subclass_foundation1_used_toggle: "hidden",
                     Feature_subclass_specialization0_name: "Elusive Predator",
                     Feature_subclass_specialization0_desc: "When your Focus makes an attack against you, "
                         + "you gain a +2 bonus to your Evasion against the attack.",
@@ -2420,6 +2880,7 @@
                         + "• The next time you deal damage, they snipe from the shadows, adding "
                         + "2d8 to your damage roll.",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "session",
                     Feature_subclass_specialization1_toggle: "hidden",
                     Feature_subclass_mastery0_name: "Reliable Backup",
                     Feature_subclass_mastery0_desc: "You can use your 'Contacts Everywhere' feature three "
@@ -2448,11 +2909,13 @@
                     Feature_subclass_foundation1_desc: "Once per long rest, touch a creature and clear 2 "
                         + "Hit Points or 2 Stress from them.",
                     Feature_subclass_foundation1_used_toggle: "inactive",
+                    Feature_subclass_foundation1_used_refresh: "long",
                     Feature_subclass_specialization0_name: "Devout",
                     Feature_subclass_specialization0_desc: "When you roll your Prayer Dice, you can roll an "
                         + " additional die and discard the lowest result. Additionally, you can "
                         + "use your 'Sparing Touch' feature twice instead of once per long rest.",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "long",
                     Feature_subclass_specialization1_toggle: "hidden",
                     Feature_subclass_mastery0_name: "Sacred Resonance",
                     Feature_subclass_mastery0_desc: "When you roll damage for your 'Spirit Weapon' feature, "
@@ -2522,6 +2985,7 @@
                         + "• +1 bonus to your Proficiency\n"
                         + "• +2 bonus to your Evasion",
                     Feature_subclass_mastery0_used_toggle: "inactive",
+                    Feature_subclass_mastery0_used_refresh: "long",
                     Feature_subclass_mastery1_toggle: "hidden"
                 }
                 break;
@@ -2547,6 +3011,7 @@
                         + "Spellcast Roll with your help, you can swap the results of their "
                         + "Duality Dice.",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "long",
                     Feature_subclass_specialization1_toggle: "hidden",
                     Feature_subclass_mastery0_name: "Arcane Charge",
                     Feature_subclass_mastery0_desc: "You can gather magical energy to enhance your "
@@ -2557,6 +3022,7 @@
                         + "gain a +3 bonus to the Difficulty of a reaction roll the spell causes "
                         + "the target to make. You stop being Charged at your next long rest.",
                     Feature_subclass_mastery0_used_toggle: "inactive",
+                    Feature_subclass_mastery0_used_refresh: "long",
                     Feature_subclass_mastery1_toggle: "hidden"
                 }
                 break;
@@ -2574,6 +3040,7 @@
                         + "you, describe what ritual you perform or preparations you make. When "
                         + "you do, clear 2 Stress and gain 2 Hope.",
                     Feature_subclass_foundation1_used_toggle: "inactive",
+                    Feature_subclass_foundation1_used_refresh: "long",
                     Feature_subclass_specialization0_name: "Rise to the Challenge",
                     Feature_subclass_specialization0_desc: "You are vigilant in the face of mounting "
                         + "danger. While you have 2 or fewer Hit Points unmarked, you can roll a "
@@ -2586,6 +3053,7 @@
                         + "session. Additionally, when an ally initiates a Tag Team Roll with you, "
                         + "they only need to spend 2 Hope to do so.",
                     Feature_subclass_mastery0_used_toggle: "inactive",
+                    Feature_subclass_mastery0_used_refresh: "session",
                     Feature_subclass_mastery1_toggle: "hidden"
                 }
                 break;
@@ -2610,6 +3078,7 @@
                         + "Additionally, once per long rest when you roll your Slayer Dice, reroll "
                         + "any 1s.",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "long",
                     Feature_subclass_specialization1_toggle: "hidden",
                     Feature_subclass_mastery0_name: "Martial Preparation",
                     Feature_subclass_mastery0_desc: "You're an inspirational warrior to all who travel with "
@@ -2633,7 +3102,7 @@
                     Feature_subclass_foundation1_toggle: "shown",
                     Feature_subclass_foundation1_name: "Adept",
                     Feature_subclass_foundation1_desc: " When you Utilize an Experience, you can mark a "
-                        + " Stress instead of spending a Hope. If you do, double your Experience "
+                        + "Stress instead of spending a Hope. If you do, double your Experience "
                         + "modifier for that roll.",
                     Feature_subclass_foundation1_used_toggle: "hidden",
                     Feature_subclass_specialization0_name: "Accomplished",
@@ -2645,6 +3114,7 @@
                     Feature_subclass_specialization1_desc: "Once per rest, when you recall a domain card in "
                         + "your vault, you can reduce its Recall Cost by 1.",
                     Feature_subclass_specialization1_used_toggle: "inactive",
+                    Feature_subclass_specialization1_used_refresh: "rest",
                     Feature_subclass_mastery0_name: "Brilliant",
                     Feature_subclass_mastery0_desc: "Take an additional domain card of your level or lower "
                         + "from a domain you have access to.",
@@ -2698,28 +3168,46 @@
                     Feature_subclass_foundation0_name: "",
                     Feature_subclass_foundation0_desc: "",
                     Feature_subclass_foundation0_used_toggle: "inactive",
+                    Feature_subclass_foundation0_used_refresh: "never",
                     Feature_subclass_foundation0_tokens_toggle: "shown",
                     Feature_subclass_foundation1_toggle: "shown",
                     Feature_subclass_foundation1_name: "",
                     Feature_subclass_foundation1_desc: "",
                     Feature_subclass_foundation1_used_toggle: "inactive",
+                    Feature_subclass_foundation1_used_refresh: "never",
                     Feature_subclass_specialization0_name: "",
                     Feature_subclass_specialization0_desc: "",
                     Feature_subclass_specialization0_used_toggle: "inactive",
+                    Feature_subclass_specialization0_used_refresh: "never",
                     Feature_subclass_specialization1_toggle: "shown",
                     Feature_subclass_specialization1_name: "",
                     Feature_subclass_specialization1_desc: "",
                     Feature_subclass_specialization1_used_toggle: "inactive",
+                    Feature_subclass_specialization1_used_refresh: "never",
                     Feature_subclass_mastery0_name: "",
                     Feature_subclass_mastery0_desc: "",
                     Feature_subclass_mastery0_used_toggle: "inactive",
+                    Feature_subclass_mastery0_used_refresh: "never",
                     Feature_subclass_mastery1_toggle: "shown",
                     Feature_subclass_mastery1_name: "",
                     Feature_subclass_mastery1_desc: "",
-                    Feature_subclass_mastery1_used_toggle: "inactive"
+                    Feature_subclass_mastery1_used_toggle: "inactive",
+                    Feature_subclass_mastery1_used_refresh: "never"
                 }
                 break;
         }
+        if (subclassFeatures.Feature_subclass_foundation0_used_toggle === "hidden")
+            subclassFeatures["Feature_subclass_foundation0_used_refresh"] = "never";
+        if (subclassFeatures.Feature_subclass_foundation1_used_toggle === "hidden" || subclassFeatures.Feature_subclass_foundation1_toggle === "hidden")
+            subclassFeatures["Feature_subclass_foundation1_used_refresh"] = "never";
+        if (subclassFeatures.Feature_subclass_specialization0_used_toggle === "hidden")
+            subclassFeatures["Feature_subclass_specialization0_used_refresh"] = "never";
+        if (subclassFeatures.Feature_subclass_specialization1_used_toggle === "hidden" || subclassFeatures.Feature_subclass_specialization1_toggle === "hidden")
+            subclassFeatures["Feature_subclass_specialization1_used_refresh"] = "never";
+        if (subclassFeatures.Feature_subclass_mastery0_used_toggle === "hidden")
+            subclassFeatures["Feature_subclass_mastery0_used_refresh"] = "never";
+        if (subclassFeatures.Feature_subclass_mastery1_used_toggle === "hidden" || subclassFeatures.Feature_subclass_mastery1_toggle === "hidden")
+            subclassFeatures["Feature_subclass_mastery1_used_refresh"] = "never";
         setAttrs(subclassFeatures);
     }
 
@@ -2814,6 +3302,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Purposeful Design",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Decide who made you and for what purpose. At "
                         + "character creation, choose one of your Experiences that best aligns "
                         + "with this purpose and gain a permanent +1 bonus to it."
@@ -2823,6 +3312,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Scales",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Your scales act as natural protection. When you "
                         + "would take Severe damage, you can mark a Stress to mark 1 fewer Hit "
                         + "Points."
@@ -2832,6 +3322,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Thick Skin",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you take Minor damage, you can mark 2 Stress "
                         + "instead of marking a Hit Point."
                 }
@@ -2840,6 +3331,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Quick Reactions",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Mark a Stress to gain advantage on a reaction roll."
                 }
                 break;
@@ -2847,6 +3339,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Luckbender",
                     Feature_ancestry0_used_toggle: "inactive",
+                    Feature_ancestry0_used_refresh: "session",
                     Feature_ancestry0_desc: "Once per session, after you or a willing ally within "
                         + "Close range makes an action roll, you can spend 3 Hope to reroll the "
                         + "Duality Dice."
@@ -2854,8 +3347,9 @@
                 break;
             case "faun":
                 ancestryFeature = {
-                    Feature_ancestry0_name: "Carpine",
+                    Feature_ancestry0_name: "Caprine Leap",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You can leap anywhere within Close range as though "
                         + "you were using normal movement, allowing you to vault obstacles, jump "
                         + "across gaps, or scale barriers with ease."
@@ -2865,6 +3359,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Charge",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you succeed on an Agility Roll to move from Far "
                         + "or Very Far range into Melee range with one or more targets, you can "
                         + "mark a Stress to deal 1d12 physical damage to all targets within Melee "
@@ -2875,6 +3370,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Fungril Network",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Make an Instinct Roll (12) to use your mycelial "
                         + "array to speak with others of your ancestry. On a success, you can "
                         + "communicate across any distance."
@@ -2884,6 +3380,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Shell",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Gain a bonus to your damage thresholds equal to your "
                         + "Proficiency."
                 }
@@ -2892,6 +3389,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Endurance",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Gain an additional Hit Point slot at character "
                         + "creation."
                 }
@@ -2900,6 +3398,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Surefooted",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You ignore disadvantage on Agility Rolls."
                 }
                 break;
@@ -2907,6 +3406,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Luckbringer",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "At the start of each session, everyone in your party "
                         + "gains a Hope."
                 }
@@ -2915,6 +3415,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "High Stamina",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "Gain an additional Stress slot at character creation."
                 }
                 break;
@@ -2922,6 +3423,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Fearless",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you roll with Fear, you can mark 2 Stress to "
                         + "change it into a roll with Hope instead."
                 }
@@ -2930,6 +3432,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Feline Instincts",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you make an Agility Roll, you can spend 2 Hope "
                         + "to reroll your Hope Die."
                 }
@@ -2938,6 +3441,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Sturdy",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "When you have 1 Hit Point remaining, attacks against "
                         + "you have disadvantage."
                 }
@@ -2946,6 +3450,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Amphibious",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You can breathe and move naturally underwater."
                 }
                 break;
@@ -2953,6 +3458,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "Natural Climber",
                     Feature_ancestry0_used_toggle: "hidden",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: "You have advantage on Agility Rolls that involve "
                         + "balancing and climbing."
                 }
@@ -2961,6 +3467,7 @@
                 ancestryFeature = {
                     Feature_ancestry0_name: "",
                     Feature_ancestry0_used_toggle: "inactive",
+                    Feature_ancestry0_used_refresh: "never",
                     Feature_ancestry0_desc: ""
                 }
         }
@@ -2975,6 +3482,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Efficient",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you take a short rest, you can choose a long "
                         + "rest move instead of a short rest move."
                 }
@@ -2983,6 +3491,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Elemental Breath",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Choose an element for your breath (such as "
                         + "electricity, fire, or ice). You can use this breath against a target or "
                         + "group of targets within Very Close range, treating it as an Instinct "
@@ -2993,6 +3502,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Increased Fortitude",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Spend 3 Hope to halve incoming physical damage."
                 }
                 break;
@@ -3000,6 +3510,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Celestial Trance",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "During a rest, you can drop into a trance to choose "
                         + "an additional downtime move."
                 }
@@ -3008,6 +3519,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Wings",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "You can fly. While flying, you can mark a Stress "
                         + "after an adversary makes an attack against you to gain a +2 bonus to "
                         + "your Evasion against that attack."
@@ -3017,6 +3529,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Kick",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you succeed on an attack against a target "
                         + "within Melee range, you can mark a Stress to kick yourself off them, "
                         + "dealing an extra 2d6 damage and knocking back either yourself or the "
@@ -3027,6 +3540,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Unshakable",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you would mark a Stress, roll a d6. On a result "
                         + "of 6, don't mark it."
                 }
@@ -3035,6 +3549,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Death Connection",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "While touching a corpse that died recently, you can "
                         + "mark a Stress to extract one memory from the corpse related to a "
                         + "specific emotion or sensation of your choice."
@@ -3044,6 +3559,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Retract",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Mark a Stress to retract into your shell. While in "
                         + "your shell, you have resistance to physical damage, you have "
                         + " disadvantage on action rolls, and you can't move."
@@ -3053,6 +3569,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Reach",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Treat any weapon, ability, spell, or other feature "
                         + "that has a Melee range as though it has a Very Close range instead."
                 }
@@ -3061,6 +3578,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Danger Sense",
                     Feature_ancestry1_used_toggle: "inactive",
+                    Feature_ancestry1_used_refresh: "rest",
                     Feature_ancestry1_desc: "Once per rest, mark a Stress to force an adversary "
                         + "to reroll an attack against you or an ally within Very Close range."
                 }
@@ -3069,6 +3587,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Internal Compass",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you roll a 1 on your Hope Die, you can reroll "
                         + "it."
                 }
@@ -3077,6 +3596,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Adaptability",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you fail a roll that utilized one of your "
                         + "Experiences, you can mark a Stress to reroll."
                 }
@@ -3085,6 +3605,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Dread Visage",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "You have advantage on rolls to intimidate hostile "
                         + "creatures."
                 }
@@ -3093,6 +3614,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Retracting Claws",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Make an Agility Roll to scratch a target within "
                         + "Melee range. On a success, they become temporarily Vulnerable."
                 }
@@ -3101,6 +3623,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Tusks",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "When you succeed on an attack against a target "
                         + "within Melee range, you can spend a Hope to gore the target with your "
                         + "tusks, dealing an extra 1d6 damage."
@@ -3110,6 +3633,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Long Tongue",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "You can use your long tongue to grab onto things "
                         + "within Close range. Mark a Stress to use your tongue as a Finesse Close "
                         + "weapon that deals d12 physical damage using your Proficiency."
@@ -3119,6 +3643,7 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "Nimble",
                     Feature_ancestry1_used_toggle: "hidden",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: "Gain a permanent +1 bonus to your Evasion at "
                         + "character creation."
                 }
@@ -3127,11 +3652,520 @@
                 ancestryFeature = {
                     Feature_ancestry1_name: "",
                     Feature_ancestry1_used_toggle: "inactive",
+                    Feature_ancestry1_used_refresh: "never",
                     Feature_ancestry1_desc: ""
                 }
         }
         setAttrs(ancestryFeature);
     }
+
+    const populateMulticlass = function(multiclass) {
+        var multiclassFeatures = {};
+        switch (multiclass) {
+            case "0": // Bard - Troubadour
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Presence",
+                    Feature_multiclass_foundation0_name: "Gifted Performer",
+                    Feature_multiclass_foundation0_desc: "You can play three different types of songs, once "
+                        + "each per long rest; describe how you perform for others to gain the "
+                        + "listed benefit:\n"
+                        + "• Relaxing Song: You and all allies within Close range clear a Hit "
+                        + "Point.\n"
+                        + "• Epic Song: Make a target within Close range temporarily Vulnerable.\n"
+                        + "• Heartbreaking Song: You and all allies within Close range gain a "
+                        + "Hope.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Maestro",
+                    Feature_multiclass_specialization0_desc: "Your rallying songs steel the courage of those "
+                        + "who listen. When you give a Rally Die to an ally, they can gain a Hope "
+                        + "or clear a Stress.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "1": // Bard - Wordsmith
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Presence",
+                    Feature_multiclass_foundation0_name: "Rousing Speech",
+                    Feature_multiclass_foundation0_desc: "Once per long rest, you can give a heartfelt, "
+                        + "inspiring speech. All allies within Far range clear 2 Stress.",
+                    Feature_multiclass_foundation0_used_toggle: "inactive",
+                    Feature_multiclass_foundation0_used_refresh: "long",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Heart of a Poet",
+                    Feature_multiclass_foundation1_desc: "After you make an action roll to impress, persuade, "
+                        + "or offend someone, you can spend a Hope to add a d4 to the roll.",
+                    Feature_multiclass_foundation1_used_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Eloquent",
+                    Feature_multiclass_specialization0_desc: "Your moving words boost morale. Once per "
+                        + "session, when you encourage an ally, you can do one of the following:\n"
+                        + "• Allow them to find a mundane object or tool they need.\n"
+                        + "• Help an Ally without spending Hope.\n"
+                        + "• Give them an additional downtime move during their next rest.",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "session",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "2": // Druid - Warden of the Elements
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Instinct",
+                    Feature_multiclass_foundation0_name: "Elemental Incarnation",
+                    Feature_multiclass_foundation0_desc: "Mark a Stress to Channel one of the following "
+                        + "elements until you take Severe damage or until your next rest:\n"
+                        + "• Fire: When an adversary within Melee range deals damage to you, they "
+                        + "take 1d10 magic damage.\n"
+                        + "• Earth: Gain a bonus to your damage thresholds equal to your "
+                        + "Proficiency.\n"
+                        + "• Water: When you deal damage to an adversary within Melee range, all "
+                        + "other adversaries within Very Close range must mark a Stress.\n"
+                        + "• Air: You can hover, gaining advantage on Agility Rolls.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Elemental Aura",
+                    Feature_multiclass_specialization0_desc: "Once per rest while Channeling, you can assume "
+                        + "an aura matching your element. The aura affects targets within Close "
+                        + "range until your Channeling ends.\n"
+                        + "• Fire: When an adversary marks 1 or more Hit Points, they must also "
+                        + "mark a Stress.\n"
+                        + "• Earth: Your allies gain a +1 bonus to Strength.\n"
+                        + "• Water: When an adversary deals damage to you, you can mark a Stress "
+                        + "to move them anywhere within Very Close range of where they are.\n"
+                        + "• Air: When you or an ally takes damage from an attack beyond Melee "
+                        + "range, reduce the damage by 1d8.",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "rest",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "3": // Druid - Warden of Renewal
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Instinct",
+                    Feature_multiclass_foundation0_name: "Clarity of Nature",
+                    Feature_multiclass_foundation0_desc: "Once per long rest, you can create a space of "
+                        + "natural serenity within Close range. When you spend a few minutes "
+                        + "resting within the space, clear Stress equal to your Instinct, "
+                        + "distributed as you choose between you and your allies.",
+                    Feature_multiclass_foundation0_used_toggle: "inactive",
+                    Feature_multiclass_foundation0_used_refresh: "long",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Regeneration",
+                    Feature_multiclass_foundation1_desc: "Touch a creature and spend 3 Hope. That creature "
+                        + "clears 1d4 Hit Points.",
+                    Feature_multiclass_foundation1_used_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Regenerative Reach",
+                    Feature_multiclass_specialization0_desc: "You can target creatures within Very Close "
+                        + "range with your 'Regeneration' feature.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "Warden's Protection",
+                    Feature_multiclass_specialization1_desc: "Once per long rest, spend 2 Hope to clear 2 Hit "
+                        + "Points on 1d4 allies within Close range.",
+                    Feature_multiclass_specialization1_used_toggle: "inactive",
+                    Feature_multiclass_specialization1_used_refresh: "long"
+                }
+                break;
+            case "4": // Guardian - Stalwart
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "hidden",
+                    Feature_multiclass_foundation0_name: "Unwavering",
+                    Feature_multiclass_foundation0_desc: "Gain a permanent +1 bonus to your damage thresholds.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Iron Will",
+                    Feature_multiclass_foundation1_desc: "When you take physical damage, you can mark an "
+                        + "additional Armor Slot to reduce the severity.",
+                    Feature_multiclass_foundation1_used_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Unrelenting",
+                    Feature_multiclass_specialization0_desc: "Gain a permanent +2 bonus to your damage "
+                        + "thresholds.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "Partners-in-Arms",
+                    Feature_multiclass_specialization1_desc: "When an ally within Very Close range takes "
+                        + "damage, you can mark an Armor Slot to reduce the severity by one "
+                        + "threshold.",
+                    Feature_multiclass_specialization1_used_toggle: "hidden"
+                }
+                break;
+            case "5": // Guardian - Vengeance
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "hidden",
+                    Feature_multiclass_foundation0_name: "At Ease",
+                    Feature_multiclass_foundation0_desc: "Gain an additional stress slot.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Revenge",
+                    Feature_multiclass_foundation1_desc: "When an adversary within Melee range succeeds on an "
+                        + "attack against you, you can mark 2 Stress to force the attacker to mark "
+                        + "a Hit Point.",
+                    Feature_multiclass_specialization0_name: "Act of Reprisal",
+                    Feature_multiclass_specialization0_desc: "When an adversary damages an ally within Melee "
+                        + "range, you gain a +1 bonus to your Proficiency for the next successful "
+                        + "attack you make against that adversary.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "6": // Ranger - Beastbound
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Agility",
+                    Feature_multiclass_foundation0_name: "Companion",
+                    Feature_multiclass_foundation0_desc: "You have an animal companion of your choice (at the "
+                        + "GM's discretion). They stay by your side unless you tell them "
+                        + "otherwise. Take the Ranger Companion sheet. When you level up your "
+                        + " character, choose a level-up option for your companion from this sheet "
+                        + "as well.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Expert Training",
+                    Feature_multiclass_specialization0_desc: "Choose an additional level-up option for your "
+                        + "companion.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "Battle-Bonded",
+                    Feature_multiclass_specialization1_desc: "When an adversary attacks you while they're "
+                        + "within your companion's Melee range, you gain a +2 bonus to your "
+                        + "Evasion against the attack.",
+                    Feature_multiclass_specialization1_used_toggle: "hidden"
+                }
+                break;
+            case "7": // Ranger - Wayfinder
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Agility",
+                    Feature_multiclass_foundation0_name: "Ruthless Predator",
+                    Feature_multiclass_foundation0_desc: "When you make a damage roll, you can mark a Stress "
+                        + "to gain a +1 bonus to your Proficiency. Additionally, when you deal "
+                        + "Severe damage to an adversary, they must mark a Stress.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Path Forward",
+                    Feature_multiclass_foundation1_desc: "When you're traveling to a place you've previously "
+                        + "visited or you carry an object that has been at the location before, "
+                        + "you can identify the shortest, most direct path to your destination.",
+                    Feature_multiclass_foundation1_used_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Elusive Predator",
+                    Feature_multiclass_specialization0_desc: "When your Focus makes an attack against you, "
+                        + "you gain a +2 bonus to your Evasion against the attack.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "8": // Rogue - Nightwalker
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Finesse",
+                    Feature_multiclass_foundation0_name: "Shadow Stepper",
+                    Feature_multiclass_foundation0_desc: "You can move from shadow to shadow. When you move "
+                        + "into an area of darkness or a shadow cast by another creature or "
+                        + "object, you can mark a Stress to disappear from where you are and "
+                        + "reappear inside another shadow within Far range. When you reappear, you "
+                        + "are Cloaked.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Dark Cloud",
+                    Feature_multiclass_specialization0_desc: "Make a Spellcast Roll (15). On a success, "
+                        + " create a temporary dark cloud that covers any area within Close range. "
+                        + "Anyone in this cloud can't see outside of it, and anyone outside of it "
+                        + "can't see in. You're considered Cloaked from any adversary for whom the "
+                        + "cloud blocks line of sight.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "Adrenaline",
+                    Feature_multiclass_specialization1_desc: "While you're Vulnerable, add your level to your "
+                        + " damage rolls.",
+                    Feature_multiclass_specialization1_used_toggle: "hidden"
+                }
+                break;
+            case "9": // Rogue - Syndicate
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Finesse",
+                    Feature_multiclass_foundation0_name: "Well-Connected",
+                    Feature_multiclass_foundation0_desc: "When you arrive in a prominent town or environment, "
+                        + "you know somebody who calls this place home. Give them a name, note how "
+                        + "you think they could be useful, and choose one fact from the following "
+                        + "list:\n"
+                        + "• They owe me a favor, but they'll be hard to find.\n"
+                        + "• They're going to ask for something in exchange.\n"
+                        + "• They're always in a great deal of trouble.\n"
+                        + "• We used to be together. It's a long story.\n"
+                        + "• We didn't part on great terms.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Contacts Everywhere",
+                    Feature_multiclass_specialization0_desc: "Once per session, you can briefly call on a "
+                        + "shady contact. Choose one of the following benefits and describe what "
+                        + "brought them here to help you in this moment:\n"
+                        + "• They provide 1 handful of gold, a unique tool, or a mundane object "
+                        + "that the situation requires.\n"
+                        + "• On your next action roll, their help provides a +3 bonus to the "
+                        + "result of your Hope or Fear Die.\n"
+                        + "• The next time you deal damage, they snipe from the shadows, adding "
+                        + "2d8 to your damage roll.",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "session",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "10": // Seraph - Divine Wielder
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Strength",
+                    Feature_multiclass_foundation0_name: "Spirit Weapon",
+                    Feature_multiclass_foundation0_desc: "When you have an equipped weapon with a range of "
+                        + "Melee or Very Close, it can fly from your hand to attack an adversary "
+                        + "within Close range and then return to you. You can mark a Stress to "
+                        + "target an additional adversary within range with the same attack roll.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Sparing Touch",
+                    Feature_multiclass_foundation1_desc: "Once per long rest, touch a creature and clear 2 "
+                        + "Hit Points or 2 Stress from them.",
+                    Feature_multiclass_foundation1_used_toggle: "inactive",
+                    Feature_multiclass_foundation1_used_refresh: "long",
+                    Feature_multiclass_specialization0_name: "Devout",
+                    Feature_multiclass_specialization0_desc: "When you roll your Prayer Dice, you can roll an "
+                        + " additional die and discard the lowest result. Additionally, you can "
+                        + "use your 'Sparing Touch' feature twice instead of once per long rest.",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "long",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "11": // Seraph - Winged Sentinel
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Strength",
+                    Feature_multiclass_foundation0_name: "Wings of Light",
+                    Feature_multiclass_foundation0_desc: "You can fly. While flying, you can do the "
+                        + "following:\n"
+                        + "• Mark a Stress to pick up and carry another willing creature "
+                        + "approximately your size or smaller.\n"
+                        + "• Spend a Hope to deal an extra 1d8 damage on a successful attack.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Ethereal Visage",
+                    Feature_multiclass_specialization0_desc: "Your supernatural visage strikes awe and fear. "
+                        + "While flying, you have advantage on Presence Rolls. When you succeed "
+                        + "with Hope on a Presence Roll, you can remove a Fear from the GM's Fear "
+                        + "pool instead of gaining Hope.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "12": // Sorcerer - Elemental Origin
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Instinct",
+                    Feature_multiclass_foundation0_name: "Elementalist",
+                    Feature_multiclass_foundation0_desc: "Choose one of the following elements at character "
+                        + "creation: air, earth, fire, lightning, water. You can shape this "
+                        + "element into harmless effects. Additionally, spend a Hope and describe "
+                        + "how your control over this element helps an action roll you're about to "
+                        + "make, then either gain a +2 bonus to the roll or a +3 bonus to the "
+                        + "roll's damage.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Natural Evasion",
+                    Feature_multiclass_specialization0_desc: "You can call forth your element to protect you "
+                        + "from harm. When an attack roll against you succeeds, you can mark a "
+                        + "Stress and describe how you use your element to defend you. When you "
+                        + "do, roll a d6 and add its result to your Evasion against the attack.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "13": // Sorcerer - Primal Origin
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Instinct",
+                    Feature_multiclass_foundation0_name: "Manipulate Magic",
+                    Feature_multiclass_foundation0_desc: "Your primal origin allows you to modify the essence "
+                        + "of magic itself. After you cast a spell or make an attack using a "
+                        + "weapon that deals magic damage, you can mark a Stress to do one of the "
+                        + "following:\n"
+                        + "• Extend the spell or attack's reach by one range\n"
+                        + "• Gain a +2 bonus to the action roll's result\n"
+                        + "• Double a damage die of your choice\n"
+                        + "• Hit an additional target within range",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Enchanted Aid",
+                    Feature_multiclass_specialization0_desc: "You can enhance the magic of others with your "
+                        + "essence. When you Help an Ally with a Spellcast Roll, you can roll a d8 "
+                        + "as your advantage die. Once per long rest, after an ally has made a "
+                        + "Spellcast Roll with your help, you can swap the results of their "
+                        + "Duality Dice.",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "long",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "14": // Warrior - Call of the Brave
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "hidden",
+                    Feature_multiclass_foundation0_name: "Courage",
+                    Feature_multiclass_foundation0_desc: "When you fail a roll with Fear, you gain a Hope.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Battle Ritual",
+                    Feature_multiclass_foundation1_desc: "Once per long rest, before you attempt something "
+                        + "incredibly dangerous or face off against a foe who clearly outmatches "
+                        + "you, describe what ritual you perform or preparations you make. When "
+                        + "you do, clear 2 Stress and gain 2 Hope.",
+                    Feature_multiclass_foundation1_used_toggle: "inactive",
+                    Feature_multiclass_foundation1_used_refresh: "long",
+                    Feature_multiclass_specialization0_name: "Rise to the Challenge",
+                    Feature_multiclass_specialization0_desc: "You are vigilant in the face of mounting "
+                        + "danger. While you have 2 or fewer Hit Points unmarked, you can roll a "
+                        + "d20 as your Hope Die.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "15": // Warrior - Call of the Slayer
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "hidden",
+                    Feature_multiclass_foundation0_name: "Slayer",
+                    Feature_multiclass_foundation0_desc: "You gain a pool of dice called Slayer Dice. On a "
+                        + "roll with Hope, you can place a d6 on this card instead of gaining a "
+                        + "Hope, adding the die to the pool. You can store a number of Slayer Dice "
+                        + "equal to your Proficiency. When you make an attack roll or damage roll, "
+                        + "you can spend any number of these Slayer Dice, rolling them and adding "
+                        + " their result to the roll. At the end of each session, clear any "
+                        + " unspent Slayer Dice on this card and gain a Hope per die cleared.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "shown",
+                    Feature_multiclass_foundation1_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Weapon Specialist",
+                    Feature_multiclass_specialization0_desc: "You can wield multiple weapons with dangerous "
+                        + "ease. When you succeed on an attack, you can spend a Hope to add one of "
+                        + "the damage dice from your secondary weapon to the damage roll. "
+                        + "Additionally, once per long rest when you roll your Slayer Dice, reroll "
+                        + "any 1s.",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "long",
+                    Feature_multiclass_specialization1_toggle: "hidden"
+                }
+                break;
+            case "16": // Wizard - School of Knowledge
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Knowledge",
+                    Feature_multiclass_foundation0_name: "Prepared",
+                    Feature_multiclass_foundation0_desc: "Take an additional domain card of your level or "
+                        + " lower from a domain you have access to.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Adept",
+                    Feature_multiclass_foundation1_desc: " When you Utilize an Experience, you can mark a "
+                        + "Stress instead of spending a Hope. If you do, double your Experience "
+                        + "modifier for that roll.",
+                    Feature_multiclass_foundation1_used_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Accomplished",
+                    Feature_multiclass_specialization0_desc: "Take an additional domain card of your level or "
+                        + "lower from a domain you have access to.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "Perfect Recall",
+                    Feature_multiclass_specialization1_desc: "Once per rest, when you recall a domain card in "
+                        + "your vault, you can reduce its Recall Cost by 1.",
+                    Feature_multiclass_specialization1_used_toggle: "inactive",
+                    Feature_multiclass_specialization1_used_refresh: "rest"
+                }
+                break;
+            case "17": // Wizard - School of War
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "Knowledge",
+                    Feature_multiclass_foundation0_name: "Battlemage",
+                    Feature_multiclass_foundation0_desc: "You've focused your studies on becoming an "
+                        + "unconquerable force on the battlefield. Gain an additional Hit Point "
+                        + "slot.",
+                    Feature_multiclass_foundation0_used_toggle: "hidden",
+                    Feature_multiclass_foundation0_tokens_toggle: "hidden",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "Face Your Fear",
+                    Feature_multiclass_foundation1_desc: "When you succeed with Fear on an attack roll, you "
+                        + "deal an extra 1d10 magic damage.",
+                    Feature_multiclass_foundation1_used_toggle: "hidden",
+                    Feature_multiclass_specialization0_name: "Conjure Shield",
+                    Feature_multiclass_specialization0_desc: "You can maintain a protective barrier of magic. "
+                        + "While you have at least 2 Hope, you add your Proficiency to your "
+                        + "Evasion.",
+                    Feature_multiclass_specialization0_used_toggle: "hidden",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "Fueled by Fear",
+                    Feature_multiclass_specialization1_desc: "The extra magic damage from your 'Face Your "
+                        + "Fear' feature increases to 2d10.",
+                    Feature_multiclass_specialization1_used_toggle: "hidden"
+                }
+                break;
+            default: // Custom Subclass
+                multiclassFeatures = {
+                    Feature_subclass_spellcast_trait: "",
+                    Feature_multiclass_foundation0_name: "",
+                    Feature_multiclass_foundation0_desc: "",
+                    Feature_multiclass_foundation0_used_toggle: "inactive",
+                    Feature_multiclass_foundation0_used_refresh: "never",
+                    Feature_multiclass_foundation0_tokens_toggle: "shown",
+                    Feature_multiclass_foundation1_toggle: "shown",
+                    Feature_multiclass_foundation1_name: "",
+                    Feature_multiclass_foundation1_desc: "",
+                    Feature_multiclass_foundation1_used_toggle: "inactive",
+                    Feature_multiclass_foundation1_used_refresh: "never",
+                    Feature_multiclass_specialization0_name: "",
+                    Feature_multiclass_specialization0_desc: "",
+                    Feature_multiclass_specialization0_used_toggle: "inactive",
+                    Feature_multiclass_specialization0_used_refresh: "never",
+                    Feature_multiclass_specialization1_toggle: "shown",
+                    Feature_multiclass_specialization1_name: "",
+                    Feature_multiclass_specialization1_desc: "",
+                    Feature_multiclass_specialization1_used_toggle: "inactive",
+                    Feature_multiclass_specialization1_used_refresh: "never"
+                }
+                break;
+        }
+        if (multiclassFeatures.Feature_multiclass_foundation0_used_toggle === "hidden")
+            multiclassFeatures["Feature_multiclass_foundation0_used_refresh"] = "never";
+        if (multiclassFeatures.Feature_multiclass_foundation1_used_toggle === "hidden" || multiclassFeatures.Feature_multiclass_foundation1_toggle === "hidden")
+            multiclassFeatures["Feature_multiclass_foundation1_used_refresh"] = "never";
+        if (multiclassFeatures.Feature_multiclass_specialization0_used_toggle === "hidden")
+            multiclassFeatures["Feature_multiclass_specialization0_used_refresh"] = "never";
+        if (multiclassFeatures.Feature_multiclass_specialization1_used_toggle === "hidden" || multiclassFeatures.Feature_multiclass_specialization1_toggle === "hidden")
+            multiclassFeatures["Feature_multiclass_specialization1_used_refresh"] = "never";
+        getAttrs(["Feature_subclass_spellcast_trait"], function(values) {
+            const currentSpellcasting = values.Feature_subclass_spellcast_trait;
+            const newSpellcasting = multiclassFeatures["Feature_subclass_spellcast_trait"];
+            if ((currentSpellcasting !== "" && currentSpellcasting !== "hidden") && (newSpellcasting !== "" && newSpellcasting !== "hidden") && (currentSpellcasting !== newSpellcasting))
+                multiclassFeatures["Feature_subclass_spellcast_trait"] = `${currentSpellcasting} OR ${newSpellcasting}`;
+            else if ((currentSpellcasting !== "" && currentSpellcasting !== "hidden") && (newSpellcasting === "hidden" || newSpellcasting === ""))
+                multiclassFeatures["Feature_subclass_spellcast_trait"] = currentSpellcasting;
+            setAttrs(multiclassFeatures);
+        });
+    }
+
+    on("clicked:short_rest", function(eventInfo) {
+        shortRest();
+    });
+    
+    on("clicked:long_rest", function(eventInfo) {
+        longRest();
+    });
+
+    on("clicked:session_reset", function(eventInfo) {
+        sessionReset();
+    });
 
     on("change:ancestry", function(eventInfo) {
         populateAncestryFeatures(eventInfo.newValue);
@@ -3168,16 +4202,28 @@
     });
 
     on("change:weapon_primary_trait change:weapon_secondary_trait", function(eventInfo) {
-        if(eventInfo.sourceAttribute === "weapon_primary_trait")
+        if (eventInfo.sourceAttribute === "weapon_primary_trait")
             populateHitModifier("primary", eventInfo.newValue);
         else
             populateHitModifier("secondary", eventInfo.newValue);
     });
 
     on("change:feature_ancestry_mixed0 change:feature_ancestry_mixed1", function (eventInfo) {
-        if(eventInfo.sourceAttribute === "feature_ancestry_mixed0")
+        if (eventInfo.sourceAttribute === "feature_ancestry_mixed0")
             populateMixedAncestryFirst(eventInfo.newValue);
         else
             populateMixedAncestrySecond(eventInfo.newValue);
+    });
+
+    on("change:feature_subclass_multiclass_toggle", function(eventInfo) {
+        if(eventInfo.newValue === "inactive")
+            setAttrs({
+                multiclass: "",
+                silent: true
+            });
+    });
+
+    on("change:multiclass", function (eventInfo) {
+        populateMulticlass(eventInfo.newValue);
     });
 </script>

@@ -58,27 +58,23 @@ input[type="radio"] {
 /* Styles for fake radio button */
 input[type="radio"] + span::before {
     border: solid 1px #a8a8a8;
-    line-height: 14px;
-    text-align: middle;
+    line-height: 13px;
+    text-align: center;
     display: inline-block;
     vertical-align: middle;
-    
     -moz-box-shadow: 0 0 2px #ccc;
     -webkit-box-shadow: 0 0 2px #ccc;
     box-shadow: 0 0 2px #ccc;
-    
     background: #f6f6f6;
     background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
     background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
     background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
     background: -o-radial-gradient(#f6f6f6, #dfdfdf);
     background: radial-gradient(#f6f6f6, #dfdfdf);
-
     content: "•";
     width: 12px;
     height: 12px;
     font-size: 36px;
-    
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
@@ -226,6 +222,31 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 .header-subclass-input {
     grid-area: header-subclass-input;
     padding-left: 5px;
+}
+
+/* RESET STYLING */
+.reset-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-areas: ". reset-short-rest-button . reset-long-rest-button . reset-session-button .";
+    margin-top: 10px;
+}
+
+.reset-container button {
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.reset-short-rest-button {
+    grid-area: reset-short-rest-button;
+}
+
+.reset-long-rest-button {
+    grid-area: reset-long-rest-button;
+}
+
+.reset-session-button {
+    grid-area: reset-session-button;
 }
 
 /* TRAITS STYLING */
@@ -861,27 +882,73 @@ input.toggle-class2[value="hidden"] ~ div.features-class2 {
 .features-subclass-header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "features-subclass-header-multiclass-toggle features-subclass-header-multiclass-dropdown"
+    "features-subclass-header-specialized-toggle features-subclass-header-mastered-toggle";
 }
 
-.features-subclass-header > div > button {
+.features-subclass-header > div > button,
+.features-subclass-header > div > div > button {
     margin-left: 5px;
 }
 
+input.toggle-subclass-multiclass:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-multiclass-toggle > button.fake-checkbox > span.checked,
 input.toggle-subclass-specialized:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-specialized-toggle > button.fake-checkbox > span.checked,
-input.toggle-subclass-mastered:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-mastered-toggle > button.fake-checkbox > span.checked {
+input.toggle-subclass-mastered:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-mastered-toggle > div.features-subclass-header-mastered-toggle-container > button.fake-checkbox > span.checked,
+input.toggle-multiclass-specialized:not([value="active"]) ~ div.features-subclass-header > div.features-subclass-header-mastered-toggle > div.features-subclass-header-multiclass-specialized > button.fake-checkbox > span.checked {
     color: transparent;
 }
 
+input.toggle-subclass-multiclass[value="inactive"] ~ div.features-subclass > div.features-subclass-multiclass-container,
 input.toggle-subclass-specialized[value="inactive"] ~ div.features-subclass > div.features-subclass-specialization-container,
-input.toggle-subclass-mastered[value="inactive"] ~ div.features-subclass > div.features-subclass-mastery-container {
+input.toggle-subclass-mastered[value="inactive"] ~ div.features-subclass > div.features-subclass-mastery-container,
+input.toggle-multiclass-specialized:not([value="active"]) ~ div.features-subclass > div.features-subclass-multiclass-specialization-container {
     display: none;
 }
 
-.features-subclass-header-specialized-toggle,
-.features-subclass-header-mastered-toggle {
-    height: 85%;
+input.toggle-subclass-multiclass[value="inactive"] ~ div.features-subclass-header > div.features-subclass-header-multiclass-dropdown,
+input.toggle-subclass-multiclass[value="inactive"] ~ div.features-subclass-header >  div.features-subclass-header-mastered-toggle > div.features-subclass-header-multiclass-specialized,
+input.toggle-subclass-multiclass[value="active"] ~ div.features-subclass-header > div.features-subclass-header-mastered-toggle > div.features-subclass-header-mastered-toggle-container {
+    display: none;
+}
+
+.features-subclass-header-multiclass-toggle {
+    grid-area: features-subclass-header-multiclass-toggle;
     display: flex;
     align-items:center;
+    margin-top: 0px;
+}
+
+.features-subclass-header-multiclass-dropdown {
+    grid-area: features-subclass-header-multiclass-dropdown;
+    display: flex;
+    align-items:center;
+    margin-top: 0px
+}
+
+.features-subclass-header-specialized-toggle {
+    grid-area: features-subclass-header-specialized-toggle;
+    display: flex;
+    align-items:center;
+}
+
+.features-subclass-header-mastered-toggle {
+    grid-area: features-subclass-header-mastered-toggle;
+    display: flex;
+    align-items:center;
+}
+
+.features-subclass-header-mastered-toggle-container,
+.features-subclass-header-multiclass-specialized {
+    display: flex;
+    align-items:center;
+    margin-top: 0px;
+}
+
+.features-subclass-header-multiclass-toggle > span,
+.features-subclass-header-specialized-toggle > span,
+.features-subclass-header-mastered-toggle-container > span,
+.features-subclass-header-multiclass-specialized > span {
+    height: 85%;
 }
 
 input.toggle-used:not([value="active"]) ~ div.features-class-inputs-used-toggle > button.fake-checkbox > span.checked,
@@ -946,6 +1013,8 @@ input.toggle-spellcasting-trait[value="hidden"] ~ div.features-subclass-spellcas
 
 input.toggle-subclass-foundation1[value="hidden"] ~ div.features-subclass-foundation1,
 input.toggle-subclass-specialization1[value="hidden"] ~ div.features-subclass-specialization1,
+input.toggle-multiclass-foundation1[value="hidden"] ~ div.features-multiclass-foundation1,
+input.toggle-multiclass-specialization1[value="hidden"] ~ div.features-multiclass-specialization1,
 input.toggle-subclass-mastery1[value="hidden"] ~ div.features-subclass-mastery1 {
     display: none;
 }
