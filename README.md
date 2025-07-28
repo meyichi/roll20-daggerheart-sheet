@@ -12,6 +12,11 @@ A character sheet for [Darrington Press](https://darringtonpress.com/)'s TTRPG, 
     - Supports Custom Classes, Subclasses, Ancestries, and Communities.
     - Tracks all player-inputted Domain Effects.
 
+- **v1.1**
+    - Implements Short Rest, Long Rest, and Session Reset functionality for Domains and Features.
+    - Tracks which corebook Features refresh under what conditions, automatically informing you of what they are and marking them as ready to be used again.
+    - Implements multiclassing functionality and auto-populates Features for all corebook Classes depending on Player selections.
+
 ## Future Plans
-- **v1.1** - implement short rest, long rest, and session reset functionality that will refresh `Used` checkboxes for both Features and Domain Effects. Implement multiclassing functionality. (*Estimated Release Date:* mid-August)
-- **v1.2** - implement all corebook Domain Effects to auto-populate SRD text. (*Estimated Release Date:* ???)
+- **v1.2** - implement prettier styling and images for the sheet. (*Estimated Release Date:* mid-August)
+- **v1.3** - implement all corebook Domain Effects to auto-populate SRD text. (*Estimated Release Date:* ???)
