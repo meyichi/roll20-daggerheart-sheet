@@ -471,9 +471,13 @@
                 </div>
                 <div class="weapons-primary-damage-modifier">
                     +
-                    <input type="number" name="attr_weapon_primary_damage_modifier" min="0">
+                    <input type="number" class="weapons-primary-damage-modifier-input" name="attr_weapon_primary_damage_modifier" min="0">
                 </div>
-                <div class="weapons-primary-damage-roll">
+                <div class="weapons-primary-damage-type">
+                    <select class="weapons-primary-damage-type-input" name="attr_weapon_primary_damage_type">
+                        <option value="physical">phys</option>
+                        <option value="magical">mag</option>
+                    </select>
                     <button type="action" class="damage-roll" name="act_weapon_primary_damage">
                 </div>
             </div>
@@ -531,9 +535,13 @@
                 </div>
                 <div class="weapons-secondary-damage-modifier">
                     +
-                    <input type="number" name="attr_weapon_secondary_damage_modifier" min="0">
+                    <input type="number" class="weapons-secondary-damage-modifier-input" name="attr_weapon_secondary_damage_modifier" min="0">
                 </div>
-                <div class="weapons-secondary-damage-roll">
+                <div class="weapons-secondary-damage-type">
+                    <select class="weapons-secondary-damage-type-input" name="attr_weapon_secondary_damage_type">
+                        <option value="physical">phys</option>
+                        <option value="magical">mag</option>
+                    </select>
                     <button type="action" class="damage-roll" name="act_weapon_secondary_damage">
                 </div>
             </div>
@@ -576,78 +584,96 @@
                 <div class="hope-experiences-bonus">
                     <input type="number" name="attr_experience_bonus" min="2">
                 </div>
-
-                <!-- TODO: style buttons, maybe -->
         </fieldset>
     </div>
+</div>
+
+<input type="hidden" class="tabs-toggle" name="attr_sheet_tab" value="domain-features">
+<div>
+    <button type="action" class="button-domain-features" name="act_button_domain_features">Domain & Features</button>
+    <button type="action" class="button-inventory" name="act_button_inventory">Inventory</button>
 </div>
 
 <!-- DOMAIN AND FEATURES -->
 <div class="domain-features-container">
     <div class="domain-container">
         <h2>Domain Effects</h2>
+        <div class="domain-buttons">
+            <button type="action" class="domain-buttons-hand" name="act_button_domain_hand">In Hand</button>
+            <button type="action" class="domain-buttons-all" name="act_button_domain_all">All</button>
+        </div>
         <fieldset class="repeating_domain">
-            <div class="domain-effect-inputs">
-                <input type="hidden" class="toggle-vaulted" name="attr_domain_effect_vaulted_toggle" value="inactive">
-                <div class="domain-effect-inputs-vaulted-toggle no-top">
-                    <span>Vaulted: </span>
-                    <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-vaulted-slot">
-                        <span class="checked">✖</span>
-                    </button>
+            <input type="hidden" class="toggle-domain" name="attr_domain_toggle" value="show">
+            <div class="domain-effect-container no-top">
+                <div class="domain-effect-inputs">
+                    <input type="hidden" class="toggle-vaulted" name="attr_domain_effect_vaulted_toggle" value="inactive">
+                    <div class="domain-effect-inputs-vaulted-toggle no-top">
+                        <button type="action" class="chat-print" name="act_domain-effect-chat-print">
+                        </button>
+                        <span class="margin-left">Vaulted: </span>
+                        <button type="action" class="fake-checkbox margin-left margin-right" name="act_domain-effect-vaulted-slot">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <div class="domain-effect-inputs-recall no-top">
+                        <span>Recall: </span>
+                        <input type="number" name="attr_domain_effect_recall" min="0">
+                    </div>
+                    <div class="domain-effect-inputs-level no-top">
+                        <span>Level: </span>
+                        <input type="number" name="attr_domain_effect_level" min="0" max="10">
+                    </div>
+                    <select class="domain-effect-inputs-domain" name="attr_domain_effect_domain">
+                        <option value="arcana">Arcana</option>
+                        <option value="blade">Blade</option>
+                        <option value="bone">Bone</option>
+                        <option value="codex">Codex</option>
+                        <option value="grace">Grace</option>
+                        <option value="midnight">Midnight</option>
+                        <option value="sage">Sage</option>
+                        <option value="splendor">Splendor</option>
+                        <option value="valor">Valor</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                    <input type="text" class="domain-effect-inputs-name" name="attr_domain_effect_name">
+                    <input type="hidden" class="toggle-used" name="attr_domain_effect_used_toggle" value="inactive">
+                    <div class="domain-effect-inputs-used-toggle no-top">
+                        <span>Used: </span>
+                        <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-used-slot">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <div class="domain-effect-inputs-tokens-toggle no-top">
+                        <span>Tokens: </span>
+                        <input type="number" name="attr_domain_effect_tokens" min="0">
+                    </div>
                 </div>
-                <div class="domain-effect-inputs-level no-top">
-                    <span>Level: </span>
-                    <input type="number" name="attr_domain_effect_level" min="0" max="10">
-                </div>
-                <select class="domain-effect-inputs-domain" name="attr_domain_effect_domain">
-                    <option value="arcana">Arcana</option>
-                    <option value="blade">Blade</option>
-                    <option value="bone">Bone</option>
-                    <option value="codex">Codex</option>
-                    <option value="grace">Grace</option>
-                    <option value="midnight">Midnight</option>
-                    <option value="sage">Sage</option>
-                    <option value="splendor">Splendor</option>
-                    <option value="valor">Valor</option>
-                </select>
-                <input type="text" class="domain-effect-inputs-name" name="attr_domain_effect_name">
-                <input type="hidden" class="toggle-used" name="attr_domain_effect_used_toggle" value="inactive">
-                <div class="domain-effect-inputs-used-toggle no-top">
-                    <span>Used: </span>
-                    <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-used-slot">
-                        <span class="checked">✖</span>
-                    </button>
-                </div>
-                <div class="domain-effect-inputs-tokens-toggle no-top">
-                    <span>Tokens: </span>
-                    <input type="number" name="attr_domain_effect_tokens" min="0">
-                </div>
-            </div>
-            <textarea class="features-big-textarea" name="attr_domain_effect_desc"></textarea>
-            <div class="domain-effect-tracker no-top">
-                <div class="domain-effect-tracker-label">
-                    <span>Refreshes on...</span>
-                </div>
-                <input type="hidden" class="toggle-shortrest" name="attr_domain_effect_shortrest_toggle" value="inactive">
-                <div class="domain-effect-tracker-shortrest-toggle no-top">
-                    <span class="subtext">Short Rest: </span>
-                    <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-shortrest-slot">
-                        <span class="checked">✖</span>
-                    </button>
-                </div>
-                <input type="hidden" class="toggle-longrest" name="attr_domain_effect_longrest_toggle" value="inactive">
-                <div class="domain-effect-tracker-longrest-toggle no-top">
-                    <span class="subtext">Long Rest: </span>
-                    <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-longrest-slot">
-                        <span class="checked">✖</span>
-                    </button>
-                </div>
-                <input type="hidden" class="toggle-session" name="attr_domain_effect_session_toggle" value="inactive">
-                <div class="domain-effect-tracker-session-toggle no-top">
-                    <span class="subtext">Session: </span>
-                    <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-session-slot">
-                        <span class="checked">✖</span>
-                    </button>
+                <textarea class="features-big-textarea" name="attr_domain_effect_desc"></textarea>
+                <div class="domain-effect-tracker no-top">
+                    <div class="domain-effect-tracker-label">
+                        <span>Refreshes on...</span>
+                    </div>
+                    <input type="hidden" class="toggle-shortrest" name="attr_domain_effect_shortrest_toggle" value="inactive">
+                    <div class="domain-effect-tracker-shortrest-toggle no-top">
+                        <span class="subtext">Short Rest: </span>
+                        <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-shortrest-slot">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-longrest" name="attr_domain_effect_longrest_toggle" value="inactive">
+                    <div class="domain-effect-tracker-longrest-toggle no-top">
+                        <span class="subtext">Long Rest: </span>
+                        <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-longrest-slot">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-session" name="attr_domain_effect_session_toggle" value="inactive">
+                    <div class="domain-effect-tracker-session-toggle no-top">
+                        <span class="subtext">Session: </span>
+                        <button type="action" class="fake-checkbox margin-left" name="act_domain-effect-session-slot">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </fieldset>
@@ -658,7 +684,10 @@
         <h2>Features</h2>
         <h4>Unique Hope Feature</h4>
         <div class="features-unique">
-            <input type="text" class="features-unique-name-input" name="attr_feature_unique_name">
+            <div class="features-unique-inputs">
+                <input type="text" class="features-unique-name-input" name="attr_feature_unique_name">
+                <button type="action" class="chat-print" name="act_feature_unique_chat_print">
+            </div>
             <textarea class="features-small-textarea" name="attr_feature_unique_desc"></textarea>
         </div>
 
@@ -680,6 +709,9 @@
                         <span>Tokens: </span>
                         <input type="number" name="attr_feature_class0_tokens" min="0">
                     </div>
+                    <div class="features-class-inputs-chat-print no-top">
+                        <button type="action" class="chat-print" name="act_feature_class0_chat_print">
+                    </div>
                 </div>
                 <textarea class="features-big-textarea" name="attr_feature_class0_desc"></textarea>
             </div>
@@ -700,6 +732,9 @@
                         <span>Tokens: </span>
                         <input type="number" name="attr_feature_class1_tokens" min="0">
                     </div>
+                    <div class="features-class-inputs-chat-print no-top">
+                        <button type="action" class="chat-print" name="act_feature_class1_chat_print">
+                    </div>
                 </div>
                 <textarea class="features-big-textarea" name="attr_feature_class1_desc"></textarea>
             </div>
@@ -719,6 +754,9 @@
                     <div class="features-class-inputs-tokens-toggle no-top">
                         <span>Tokens: </span>
                         <input type="number" name="attr_feature_class2_tokens" min="0">
+                    </div>
+                    <div class="features-class-inputs-chat-print no-top">
+                        <button type="action" class="chat-print" name="act_feature_class2_chat_print">
                     </div>
                 </div>
                 <textarea class="features-big-textarea" name="attr_feature_class2_desc"></textarea>
@@ -814,6 +852,9 @@
                         <span>Tokens: </span>
                         <input type="number" name="attr_feature_subclass_foundation0_tokens" min="0">
                     </div>
+                    <div class="features-subclass-inputs-chat-print no-top">
+                        <button type="action" class="chat-print" name="act_feature_subclass_foundation0_chat_print">
+                    </div>
                 </div>
                 <textarea class="features-big-textarea" name="attr_feature_subclass_foundation0_desc"></textarea>
             </div>
@@ -828,6 +869,9 @@
                         <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_foundation1_used_slot">
                             <span class="checked">✖</span>
                         </button>
+                    </div>
+                    <div class="features-subclass-inputs-chat-print no-top">
+                        <button type="action" class="chat-print" name="act_feature_subclass_foundation1_chat_print">
                     </div>
                 </div>
                 <textarea class="features-big-textarea" name="attr_feature_subclass_foundation1_desc"></textarea>
@@ -844,6 +888,9 @@
                                 <span class="checked">✖</span>
                             </button>
                         </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_subclass_specialization0_chat_print">
+                        </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_subclass_specialization0_desc"></textarea>
                 </div>
@@ -858,6 +905,9 @@
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_specialization1_used_slot">
                                 <span class="checked">✖</span>
                             </button>
+                        </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_subclass_specialization1_chat_print">
                         </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_subclass_specialization1_desc"></textarea>
@@ -880,6 +930,9 @@
                             <span>Tokens: </span>
                             <input type="number" name="attr_feature_multiclass_foundation0_tokens" min="0">
                         </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_multiclass_foundation0_chat_print">
+                        </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_multiclass_foundation0_desc"></textarea>
                 </div>
@@ -894,6 +947,9 @@
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_multiclass_foundation1_used_slot">
                                 <span class="checked">✖</span>
                             </button>
+                        </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_multiclass_foundation1_chat_print">
                         </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_multiclass_foundation1_desc"></textarea>
@@ -911,6 +967,9 @@
                                 <span class="checked">✖</span>
                             </button>
                         </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_multiclass_specialization0_chat_print">
+                        </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_multiclass_specialization0_desc"></textarea>
                 </div>
@@ -925,6 +984,9 @@
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_multiclass_specialization1_used_slot">
                                 <span class="checked">✖</span>
                             </button>
+                        </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_multiclass_specialization1_chat_print">
                         </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_multiclass_specialization1_desc"></textarea>
@@ -942,6 +1004,9 @@
                                 <span class="checked">✖</span>
                             </button>
                         </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_subclass_mastery0_chat_print">
+                        </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_subclass_mastery0_desc"></textarea>
                 </div>
@@ -956,6 +1021,9 @@
                             <button type="action" class="fake-checkbox margin-left" name="act_feature_subclass_mastery1_used_slot">
                                 <span class="checked">✖</span>
                             </button>
+                        </div>
+                        <div class="features-subclass-inputs-chat-print no-top">
+                            <button type="action" class="chat-print" name="act_feature_subclass_mastery1_chat_print">
                         </div>
                     </div>
                     <textarea class="features-big-textarea" name="attr_feature_subclass_mastery1_desc"></textarea>
@@ -1024,6 +1092,9 @@
                         <span class="checked">✖</span>
                     </button>
                 </div>
+                <div class="features-ancestry-inputs-chat-print no-top">
+                    <button type="action" class="chat-print" name="act_feature_ancestry0_chat_print">
+                </div>
             </div>
             <textarea class="features-small-textarea" name="attr_feature_ancestry0_desc"></textarea>
         </div>
@@ -1037,6 +1108,9 @@
                     <button type="action" class="fake-checkbox margin-left" name="act_feature_ancestry1_used_slot">
                         <span class="checked">✖</span>
                     </button>
+                </div>
+                <div class="features-ancestry-inputs-chat-print no-top">
+                    <button type="action" class="chat-print" name="act_feature_ancestry1_chat_print">
                 </div>
             </div>
             <textarea class="features-small-textarea" name="attr_feature_ancestry1_desc"></textarea>
@@ -1059,10 +1133,73 @@
                     <span>Tokens: </span>
                     <input type="number" name="attr_feature_community_tokens" min="0">
                 </div>
+                <div class="features-community-inputs-chat-print no-top">
+                    <button type="action" class="chat-print" name="act_feature_community_chat_print">
+                </div>
             </div>
             <textarea class="features-big-textarea" name="attr_feature_community_desc"></textarea>
         </div>
     </div>
+</div>
+
+<div class="inventory-container">
+    <div class="inventory-gold centered">
+        <h2>Gold</h2>
+        <div class="inventory-gold-container">
+            <div>
+                <span class="inventory-gold-label">Handfuls: </span>
+                <input type="radio" class="sheet-zero" name="attr_gold_handfuls" value="0" checked="checked"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="1"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="2"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="3"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="4"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="5"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="6"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="7"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="8"> <span></span>
+                <input type="radio" name="attr_gold_handfuls" value="9"> <span></span>
+            </div>
+
+            <div>
+                <span class="inventory-gold-label">Bags: </span>
+                <input type="radio" class="sheet-zero" name="attr_gold_bags" value="0" checked="checked"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="1"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="2"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="3"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="4"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="5"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="6"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="7"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="8"> <span></span>
+                <input type="radio" name="attr_gold_bags" value="9"> <span></span>
+            </div>
+
+        <div>
+            <span class="inventory-gold-label">Chest: </span>
+            <input type="radio" class="sheet-zero" name="attr_gold_chest" value="0" checked="checked"> <span></span>
+            <input type="radio" name="attr_gold_chest" value="1"> <span></span>
+        </div>
+    </div>
+
+    <h2>Inventory</h2>
+    <div class="inventory-label">
+        <div class="inventory-label-quantity no-top">
+            <span class="subtext">#</span>
+        </div>
+        <div class="inventory-label-item no-top">
+            <span class="subtext">Item</span>
+        </div>
+    </div>
+
+    <fieldset class="repeating_inventory">
+        <div class="inventory-items-container">
+            <div class="inventory-items-container-quantity">
+                <input type="number" name="attr_item_quantity" min="0">
+            </div>
+            <div class="inventory-items-container-name">
+                <input type="text" name="attr_item_name">
+            </div>
+    </fieldset>
 </div>
 
 <rolltemplate class="sheet-rolltemplate-duality">
@@ -1125,7 +1262,32 @@
             Rolling <b>{{proficiency}}{{dieSize}}+{{modifier}}</b>...
         </div>
         <div class="sheet-damage-total">
-            Total: {{total}}
+            Total: {{total}} {{type}} damage
+        </div>
+    </div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-print-domain">
+    <div class="sheet-print-domain-container">
+        <div class="sheet-print-domain-name">
+            <h3>Domain Effect - {{name}}</h3>
+        </div>
+        <div class="sheet-print-domain-details">
+            <i>Level {{level}} {{domain}}</i>
+        </div>
+        <div class="sheet-print-domain-description">
+            {{description}}
+        </div>
+    </div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-print-feature">
+    <div class="sheet-print-feature-container">
+        <div class="sheet-print-feature-name">
+            <h3>{{category}} Feature - {{name}}</h3>
+        </div>
+        <div class="sheet-print-feature-description">
+            {{description}}
         </div>
     </div>
 </rolltemplate>
@@ -1448,6 +1610,129 @@
         }
     ];
 
+    const printButtons = [
+        {
+            template: "domain",
+            button: "domain-effect-chat-print",
+            domain: "repeating_domain_domain_effect_domain",
+            level: "repeating_domain_domain_effect_level",
+            name: "repeating_domain_domain_effect_name",
+            description: "repeating_domain_domain_effect_desc"
+        }, {
+            template: "feature",
+            category: "Unique Hope",
+            button: "feature_unique_chat_print",
+            name: "feature_unique_name",
+            description: "feature_unique_desc"
+        }, {
+            template: "feature",
+            category: "Class",
+            button: "feature_class0_chat_print",
+            name: "feature_class0_name",
+            description: "feature_class0_desc"
+        }, {
+            template: "feature",
+            category: "Class",
+            button: "feature_class1_chat_print",
+            name: "feature_class1_name",
+            description: "feature_class1_desc"
+        }, {
+            template: "feature",
+            category: "Class",
+            button: "feature_class2_chat_print",
+            name: "feature_class2_name",
+            description: "feature_class2_desc"
+        }, {
+            template: "feature",
+            category: "Subclass Foundation",
+            button: "feature_subclass_foundation0_chat_print",
+            name: "feature_subclass_foundation0_name",
+            description: "feature_subclass_foundation0_desc"
+        }, {
+            template: "feature",
+            category: "Subclass Foundation",
+            button: "feature_subclass_foundation1_chat_print",
+            name: "feature_subclass_foundation1_name",
+            description: "feature_subclass_foundation1_desc"
+        }, {
+            template: "feature",
+            category: "Subclass Specialization",
+            button: "feature_subclass_specialization0_chat_print",
+            name: "feature_subclass_specialization0_name",
+            description: "feature_subclass_specialization0_desc"
+        }, {
+            template: "feature",
+            category: "Subclass Specialization",
+            button: "feature_subclass_specialization1_chat_print",
+            name: "feature_subclass_specialization1_name",
+            description: "feature_subclass_specialization1_desc"
+        }, {
+            template: "feature",
+            category: "Multiclass Foundation",
+            button: "feature_multiclass_foundation0_chat_print",
+            name: "feature_multiclass_foundation0_name",
+            description: "feature_multiclass_foundation0_desc"
+        }, {
+            template: "feature",
+            category: "Multiclass Foundation",
+            button: "feature_multiclass_foundation1_chat_print",
+            name: "feature_multiclass_foundation1_name",
+            description: "feature_multiclass_foundation1_desc"
+        }, {
+            template: "feature",
+            category: "Multiclass Specialization",
+            button: "feature_multiclass_specialization0_chat_print",
+            name: "feature_multiclass_specialization0_name",
+            description: "feature_multiclass_specialization0_desc"
+        }, {
+            template: "feature",
+            category: "Multiclass Specialization",
+            button: "feature_multiclass_specialization1_chat_print",
+            name: "feature_multiclass_specialization1_name",
+            description: "feature_multiclass_specialization1_desc"
+        }, {
+            template: "feature",
+            category: "Subclass Mastery",
+            button: "feature_subclass_mastery0_chat_print",
+            name: "feature_subclass_mastery0_name",
+            description: "feature_subclass_mastery0_desc"
+        }, {
+            template: "feature",
+            category: "Subclass Mastery",
+            button: "feature_subclass_mastery1_chat_print",
+            name: "feature_subclass_mastery1_name",
+            description: "feature_subclass_mastery1_desc"
+        }, {
+            template: "feature",
+            category: "Ancestry",
+            button: "feature_ancestry0_chat_print",
+            name: "feature_ancestry0_name",
+            description: "feature_ancestry0_desc"
+        }, {
+            template: "feature",
+            category: "Ancestry",
+            button: "feature_ancestry1_chat_print",
+            name: "feature_ancestry1_name",
+            description: "feature_ancestry1_desc"
+        }, {
+            template: "feature",
+            category: "Community",
+            button: "feature_community_chat_print",
+            name: "feature_community_name",
+            description: "feature_community_desc"
+        }
+    ];
+
+    const tabButtons = [
+        {
+            button: "button_domain_features",
+            value: "domain-features"
+        }, {
+            button: "button_inventory",
+            value: "inventory"
+        }
+    ];
+
     /* Listeners for each slot */
     slotToggles.forEach((pair) => {
         if (pair.type === "domain") {
@@ -1515,13 +1800,45 @@
                 const name = `Weapon_${rollButton.toggle}_name`;
                 const dieSize = `Weapon_${rollButton.toggle}_damage_dice`;
                 const modifier = `Weapon_${rollButton.toggle}_damage_modifier`;
-                getAttrs(["Proficiency", name, dieSize, modifier], (values) => {
+                const type = `Weapon_${rollButton.toggle}_damage_type`;
+                getAttrs(["Proficiency", name, dieSize, modifier, type], (values) => {
                     startRoll(`&{template:damage} {{name=${values[name]}}} {{proficiency=${values.Proficiency}}} {{dieSize=${values[dieSize]}}} {{modifier=${values[modifier]}}}`
-                    + `{{total=[[${values.Proficiency}${values[dieSize]} + ${values[modifier]}]]}}`, (roll) => {
+                    + `{{total=[[${values.Proficiency}${values[dieSize]} + ${values[modifier]}]]}} {{type=${values[type]}}}`, (roll) => {
                         finishRoll(roll.rollId);
                     });
                 });
             }
+        });
+    });
+
+    printButtons.forEach((printButton) => {
+        if (printButton.template === "domain") {
+            const prefix = "repeating_domain";
+            on(`clicked:${prefix}:${printButton.button}`, function() {
+                getAttrs([printButton.domain, printButton.level, printButton.name, printButton.description], (values) => {
+                    const domainCapitalized = values[printButton.domain].charAt(0).toUpperCase() + values[printButton.domain].slice(1);
+                    startRoll(`&{template:print-domain} {{name=${values[printButton.name]}}} {{level=${values[printButton.level]}}} {{domain=${domainCapitalized}}}`
+                    + `{{description=${values[printButton.description]}}}`, (roll) => {
+                        finishRoll(roll.rollId);
+                    });
+                });
+            });
+        } else { // Feature Chat Prints
+            on(`clicked:${printButton.button}`, function() {
+                getAttrs([printButton.name, printButton.description], (values) => {
+                    startRoll(`&{template:print-feature} {{name=${values[printButton.name]}}} {{category=${printButton.category}}} {{description=${values[printButton.description]}}}`, (roll) => {
+                        finishRoll(roll.rollId);
+                    });
+                });
+            });
+        }
+    });
+
+    tabButtons.forEach(button => {
+        on(`clicked:${button.button}`, function() {
+            setAttrs({
+                sheet_tab: button.value
+            });
         });
     });
 
@@ -2056,7 +2373,7 @@
             case "loreborne":
                 communityFeatures = {
                     Feature_community_name: "Well-Read",
-                    Feature_community_desc: "ou have advantage on rolls that involve the history, "
+                    Feature_community_desc: "You have advantage on rolls that involve the history, "
                         + "culture, or politics of a prominent person or place.",
                     Feature_community_used_toggle: "hidden",
                     Feature_community_used_refresh: "never",
@@ -2506,7 +2823,12 @@
                     Feature_class0_used_toggle: "inactive",
                     Feature_class0_used_refresh: "never",
                     Feature_class0_tokens_toggle: "shown",
-                    Feature_class1_toggle: "hidden",
+                    Feature_class1_toggle: "shown",
+                    Feature_class1_name: "",
+                    Feature_class1_desc: "",
+                    Feature_class1_used_toggle: "inactive",
+                    Feature_class1_used_refresh: "never",
+                    Feature_class1_tokens_toggle: "shown",
                     Feature_class2_toggle: "hidden"
                 };
         }
@@ -4225,5 +4547,35 @@
 
     on("change:multiclass", function (eventInfo) {
         populateMulticlass(eventInfo.newValue);
+    });
+
+    on("clicked:button_domain_hand", function() {
+        getSectionIDs("repeating_domain", ids => {
+            const fields = [];
+            ids.forEach(id => {
+                fields.push(`repeating_domain_${id}_domain_effect_vaulted_toggle`);
+            });
+            getAttrs([...fields], (values) => {
+                console.log(values);
+                const output = {};
+                ids.forEach(id => {
+                    values[`repeating_domain_${id}_domain_effect_vaulted_toggle`] === "inactive" ?
+                        output[`repeating_domain_${id}_domain_toggle`] = "show":
+                        output[`repeating_domain_${id}_domain_toggle`] = "hidden";
+                });
+                console.log(output);
+                setAttrs(output);
+            });
+        });
+    });
+
+    on("clicked:button_domain_all", function() {
+        getSectionIDs("repeating_domain", ids => {
+            const output = {};
+            ids.forEach(id => {
+                output[`repeating_domain_${id}_domain_toggle`] = "show";
+            });
+            setAttrs(output);
+        });
     });
 </script>

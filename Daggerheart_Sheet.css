@@ -40,6 +40,10 @@ div {
     margin-left: 5px;
 }
 
+.margin-right {
+    margin-right: 5px;
+}
+
 select > option[disabled="true"] {
     font-style: italic;
     font-weight: bold;
@@ -129,7 +133,6 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     display: flex;
     justify-content: center;
 }
-
 
 /* HEADER STYLING */
 .header-container {
@@ -486,10 +489,10 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: "weapons-primary-label weapons-primary-label weapons-primary-label weapons-primary-label"
     "weapons-primary-input weapons-primary-input weapons-primary-range-input weapons-primary-trait"
-    "weapons-primary-hit weapons-primary-hit weapons-primary-damage weapons-primary-damage"
+    "weapons-primary-hit weapons-primary-damage weapons-primary-damage weapons-primary-damage"
     "weapons-secondary-label weapons-secondary-label weapons-secondary-label weapons-secondary-label"
     "weapons-secondary-input weapons-secondary-input weapons-secondary-range-input weapons-secondary-trait"
-    "weapons-secondary-hit weapons-secondary-hit weapons-secondary-damage weapons-secondary-damage";
+    "weapons-secondary-hit weapons-secondary-damage weapons-secondary-damage weapons-secondary-damage";
 }
 
 .weapons-primary-label {
@@ -533,9 +536,9 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     margin-bottom: 5px;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "weapons-primary-damage-label weapons-primary-damage-label weapons-primary-damage-label"
-    "weapons-primary-damage-dice weapons-primary-damage-modifier weapons-primary-damage-roll"
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "weapons-primary-damage-label weapons-primary-damage-label weapons-primary-damage-label weapons-primary-damage-label weapons-primary-damage-label weapons-primary-damage-label"
+    "weapons-primary-damage-dice weapons-primary-damage-dice weapons-primary-damage-modifier weapons-primary-damage-type weapons-primary-damage-type weapons-primary-damage-type"
 }
 
 .weapons-primary-damage-label {
@@ -546,6 +549,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 .weapons-primary-damage-dice {
     grid-area: weapons-primary-damage-dice;
     margin-top: 0px;
+    padding-left: 5px;
 }
 
 .weapons-primary-damage-modifier {
@@ -553,11 +557,21 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     display: flex;
     align-items: center;
     margin-top: 0px;
+    padding-right: 3px;
 }
 
-.weapons-primary-damage-roll {
-    grid-area: weapons-primary-damage-roll;
+.weapons-primary-damage-modifier-input {
+    width: 2.5em !important;
+}
+
+.weapons-primary-damage-type {
+    grid-area: weapons-primary-damage-type;
+    display: flex;
     margin-top: 0px;
+}
+
+.weapons-primary-damage-type-input {
+    margin-right: 5px;
 }
 
 .damage-roll {
@@ -611,9 +625,9 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     margin-bottom: 5px;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "weapons-secondary-damage-label weapons-secondary-damage-label weapons-secondary-damage-label"
-    "weapons-secondary-damage-dice weapons-secondary-damage-modifier weapons-secondary-damage-roll"
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "weapons-secondary-damage-label weapons-secondary-damage-label weapons-secondary-damage-label weapons-secondary-damage-label weapons-secondary-damage-label weapons-secondary-damage-label"
+    "weapons-secondary-damage-dice weapons-secondary-damage-dice weapons-secondary-damage-modifier weapons-secondary-damage-type weapons-secondary-damage-type weapons-secondary-damage-type"
 }
 
 .weapons-secondary-damage-label {
@@ -624,6 +638,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 .weapons-secondary-damage-dice {
     grid-area: weapons-secondary-damage-dice;
     margin-top: 0px;
+    padding-left: 5px;
 }
 
 .weapons-secondary-damage-modifier {
@@ -631,11 +646,21 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     display: flex;
     align-items: center;
     margin-top: 0px;
+    padding-right: 3px;
 }
 
-.weapons-secondary-damage-roll {
-    grid-area: weapons-secondary-damage-roll;
+.weapons-secondary-damage-modifier-input {
+    width: 2.5em !important;
+}
+
+.weapons-secondary-damage-type {
+    grid-area: weapons-secondary-damage-type;
+    display: flex;
     margin-top: 0px;
+}
+
+.weapons-secondary-damage-type-input {
+    margin-right: 5px;
 }
 
 /* HOPE CONTAINER STYLING */
@@ -654,7 +679,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 }
 
 .hope-experiences-label-bonus {
-    grid-area: hope-experiences-label-bonus
+    grid-area: hope-experiences-label-bonus;
 }
 
 .repcontainer[data-groupname="repeating_experiences"] {
@@ -681,6 +706,21 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     grid-area: hope-experiences-bonus;
 }
 
+/* TABS STYLING */
+.button-domain-features, .button-inventory {
+    border: 1px solid black;
+    width: 37%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.tabs-toggle:not([value="domain-features"]) ~ div.domain-features-container,
+.tabs-toggle:not([value="inventory"]) ~ div.inventory-container {
+    display: none;
+}
+
 /* DOMAIN & FEATURES STYLING */
 .domain-features-container {
     display: grid;
@@ -693,6 +733,26 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     grid-area: domain-container;
 }
 
+.domain-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: ". domain-buttons-hand . domain-buttons-all .";
+    margin-bottom: 10px;
+}
+
+.domain-buttons button {
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.domain-buttons-hand {
+    grid-area: domain-buttons-hand;
+}
+
+.domain-buttons-all {
+    grid-area: domain-buttons-all;
+}
+
 .repcontainer[data-groupname="repeating_domain"] {
     margin-top: 0px;
 }
@@ -701,10 +761,14 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     border-bottom: 1pt solid black;
 }
 
+[data-groupname="repeating_domain"] .repitem:has(> .toggle-domain[value="hidden"]) {
+    display: none;
+}
+
 .domain-effect-inputs {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "domain-effect-inputs-vaulted-toggle domain-effect-inputs-level domain-effect-inputs-domain domain-effect-inputs-domain"
+    grid-template-areas: "domain-effect-inputs-vaulted-toggle domain-effect-inputs-recall domain-effect-inputs-level domain-effect-inputs-domain"
     "domain-effect-inputs-name domain-effect-inputs-name domain-effect-inputs-used-toggle domain-effect-inputs-tokens-toggle";
     margin-bottom: 5px;
 }
@@ -713,7 +777,23 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     grid-area: domain-effect-inputs-vaulted-toggle;
     display: flex;
     align-items: center;
-    margin-left: 5px;
+}
+
+.chat-print {
+    background-color: transparent;
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Chat_Bubble.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    border: none;
+    padding: 0px;
+}
+
+.domain-effect-inputs-recall {
+    grid-area: domain-effect-inputs-recall;
+    display: flex;
+    align-items: center;
 }
 
 .domain-effect-inputs-level {
@@ -794,9 +874,15 @@ input.toggle-session:not([value="active"]) ~ div.domain-effect-tracker-session-t
     padding-left: 20px;
 }
 
-input.features-unique-name-input {
-    width: calc(50% - 5px);
+.features-unique-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
     margin-bottom: 5px;
+}
+
+input.features-unique-name-input {
+    width: calc(42% - 5px);
 }
 
 textarea.features-small-textarea {
@@ -815,8 +901,8 @@ textarea.features-big-textarea {
 
 .features-class-inputs {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "features-class-inputs-name features-class-inputs-name features-class-inputs-used-toggle features-class-inputs-tokens-toggle";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "features-class-inputs-name features-class-inputs-name features-class-inputs-name features-class-inputs-used-toggle features-class-inputs-tokens-toggle features-class-inputs-chat-print";
     margin-bottom: 5px;
 }
 
@@ -868,6 +954,12 @@ input.toggle-tokens[value="hidden"] ~ div.features-class-inputs-tokens-toggle {
 
 .features-class-inputs-tokens-toggle > input {
     margin-left: 5px;
+}
+
+.features-class-inputs-chat-print {
+    grid-area: features-class-inputs-chat-print;
+    display: flex;
+    justify-content: flex-end;
 }
 
 input.toggle-used:not([value="hidden"]) ~ div.features-class-inputs-tokens-toggle {
@@ -988,8 +1080,8 @@ input.toggle-spellcasting-trait[value="hidden"] ~ div.features-subclass-spellcas
 
 .features-subclass-inputs {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "features-subclass-inputs-name features-subclass-inputs-name features-subclass-inputs-used-toggle features-subclass-inputs-tokens-toggle";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "features-subclass-inputs-name features-subclass-inputs-name features-subclass-inputs-name features-subclass-inputs-used-toggle features-subclass-inputs-tokens-toggle features-subclass-inputs-chat-print";
     margin-bottom: 5px;
 }
 
@@ -1009,6 +1101,12 @@ input.toggle-spellcasting-trait[value="hidden"] ~ div.features-subclass-spellcas
     display: flex;
     align-items: center;
     margin-left: 5px;
+}
+
+.features-subclass-inputs-chat-print {
+    grid-area: features-subclass-inputs-chat-print;
+    display: flex;
+    justify-content: flex-end;
 }
 
 input.toggle-subclass-foundation1[value="hidden"] ~ div.features-subclass-foundation1,
@@ -1065,7 +1163,7 @@ input.toggle-ancestry-mixed[value="hidden"] ~ div.features-ancestry-mixed-contai
 .features-ancestry-inputs {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "features-ancestry-inputs-name features-ancestry-inputs-name features-ancestry-inputs-used-toggle .";
+    grid-template-areas: "features-ancestry-inputs-name features-ancestry-inputs-name features-ancestry-inputs-used-toggle features-ancestry-inputs-chat-print";
     margin-bottom: 5px;
 }
 
@@ -1090,14 +1188,20 @@ input.toggle-ancestry1-used:not([value="active"]) ~ div.features-ancestry-inputs
     color: transparent;
 }
 
+.features-ancestry-inputs-chat-print {
+    grid-area: features-ancestry-inputs-chat-print;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .features-community-container {
     padding-left: 20px;
 }
 
 .features-community-inputs {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "features-community-inputs-name features-community-inputs-name features-community-inputs-used-toggle features-community-inputs-tokens-toggle";
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "features-community-inputs-name features-community-inputs-name features-community-inputs-name features-community-inputs-used-toggle features-community-inputs-tokens-toggle features-community-inputs-chat-print";
     margin-bottom: 5px;
 }
 
@@ -1126,6 +1230,57 @@ input.toggle-used:not([value="active"]) ~ div.features-community-inputs-used-tog
 input.toggle-used[value="hidden"] ~ div.features-community-inputs-used-toggle,
 input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggle {
     display: none;
+}
+
+.features-community-inputs-chat-print {
+    grid-area: features-community-inputs-chat-print;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inventory-gold-container {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: auto;
+}
+
+.inventory-gold-label {
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.inventory-label {
+    display: grid;
+    grid-template-columns: repeated(12, 1fr);
+    grid-template-areas: ". inventory-label-quantity inventory-label-item inventory-label-item inventory-label-item inventory-label-item inventory-label-item inventory-label-item inventory-label-item inventory-label-item inventory-label-item .";
+}
+
+.inventory-label-quantity {
+    grid-area: inventory-label-quantity;
+}
+
+.inventory-label-item {
+    grid-area: inventory-label-item;
+}
+
+.repcontainer[data-groupname="repeating_inventory"],
+[data-groupname="repeating_inventory"] .repitem {
+    margin-top: 0px;
+}
+
+.inventory-items-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: ". inventory-items-container-quantity inventory-items-container-name inventory-items-container-name inventory-items-container-name inventory-items-container-name inventory-items-container-name inventory-items-container-name inventory-items-container-name inventory-items-container-name inventory-items-container-name .";
+}
+
+.inventory-items-container-quantity {
+    grid-area: inventory-items-container-quantity;
+}
+
+.inventory-items-container-name {
+    grid-area: inventory-items-container-name;
 }
 
 /* DUALITY ROLL TEMPLATE STYLING */
@@ -1252,4 +1407,49 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .sheet-rolltemplate-damage .sheet-damage-total {
     margin-top: 10px;
     margin-bottom: 5px;
+}
+
+/* PRINT DOMAIN ROLL TEMPLATE STYLING */
+.sheet-rolltemplate-print-domain {
+    margin-left: -30px;
+    background-color: white;
+}
+
+.sheet-rolltemplate-print-domain .sheet-print-domain-container {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.sheet-rolltemplate-print-domain .sheet-print-domain-name {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.sheet-rolltemplate-print-domain .sheet-print-domain-details {
+    margin-top: 5px;
+}
+
+.sheet-rolltemplate-print-domain .sheet-print-domain-description {
+    margin-top: 5px;
+    padding-left: 10px;
+}
+
+/* PRINT FEATURE ROLL TEMPLATE STYLING */
+.sheet-rolltemplate-print-feature {
+    margin-left: -30px;
+    background-color: white;
+}
+
+.sheet-rolltemplate-print-feature .sheet-print-feature-container {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.sheet-rolltemplate-print-feature .sheet-print-feature-name {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.sheet-rolltemplate-print-feature .sheet-print-feature-description {
+    margin-top: 5px;
 }
