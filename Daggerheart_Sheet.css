@@ -1,6 +1,13 @@
 /* GENERAL STYLING */
 h2 {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 > img {
+    height: 25px;
+    padding-bottom: 3px;
 }
 
 h4 {
@@ -49,7 +56,6 @@ select > option[disabled="true"] {
     font-weight: bold;
 }
 
-/* Hide actual radio button */
 input[type="radio"] {
     position: absolute;
     opacity: 0;
@@ -59,7 +65,6 @@ input[type="radio"] {
     margin-top: 6px;
 }
   
-/* Styles for fake radio button */
 input[type="radio"] + span::before {
     border: solid 1px #a8a8a8;
     line-height: 13px;
@@ -84,17 +89,14 @@ input[type="radio"] + span::before {
     border-radius: 50%;
 }
   
-/* Remove dot from all radios _after_ selected one */
 input[type="radio"]:checked ~ input[type="radio"] + span::before {    
     content: "";
 }
 
-/* Hide X by default */
 input[type=radio].sheet-zero:checked + span::before {
     opacity: 0;
 }
 
-/* Display X on hover */
 input[type=radio].sheet-zero:hover + span::before {
     opacity: 1;
 }
@@ -105,7 +107,6 @@ input[type=radio].sheet-zero + span::before {
     opacity: 0.25;
 }
 
-/* Configure the button styling; this example makes it look like a checkbox */
 .fake-checkbox {
     padding: 0;
     border: solid 1px #a8a8a8;
@@ -119,12 +120,10 @@ input[type=radio].sheet-zero + span::before {
     font-size: 18px;
 }
 
-/* Hide the checkbox if the attribute value is "hidden" */
 input.toggle[value="hidden"] + button.fake-checkbox {
     display: none;
 }
 
-/* Hide the X unless the button is clicked */
 input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     color: transparent;
 }
@@ -132,6 +131,14 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 .toggle-group {
     display: flex;
     justify-content: center;
+}
+
+/* LAYOUT STYLING */
+.charsheet {
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Background_Top.png);
+    background-repeat: no-repeat;
+    min-width: 835px;
+    padding-top: 5px !important;
 }
 
 /* HEADER STYLING */
@@ -232,7 +239,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-areas: ". reset-short-rest-button . reset-long-rest-button . reset-session-button .";
-    margin-top: 10px;
+    margin-top: 11px;
 }
 
 .reset-container button {
@@ -481,6 +488,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 /* WEAPONS CONTAINER STYLING */
 .weapons-container {
     grid-area: weapons-container;
+    padding-right: 3px;
 }
 
 .weapons-primary-secondary {
@@ -666,6 +674,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 /* HOPE CONTAINER STYLING */
 .hope-container {
     grid-area: hope-container;
+    padding-right: 3px;
 }
 
 .hope-experiences-label {
@@ -707,9 +716,15 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 }
 
 /* TABS STYLING */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
 .button-domain-features, .button-inventory {
     border: 1px solid black;
-    width: 37%;
+    width: 33%;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     margin-left: 5%;
@@ -723,6 +738,11 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 
 /* DOMAIN & FEATURES STYLING */
 .domain-features-container {
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Background_Domain_Features.png);
+    background-repeat: no-repeat;
+    margin: -10px;
+    padding: 10px;
+    padding-top: 2px;
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     grid-template-areas: "domain-container domain-container domain-container domain-container domain-container domain-container . features-container features-container features-container features-container features-container features-container"
@@ -738,6 +758,7 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: ". domain-buttons-hand . domain-buttons-all .";
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .domain-buttons button {
@@ -868,6 +889,11 @@ input.toggle-session:not([value="active"]) ~ div.domain-effect-tracker-session-t
 /* FEATURES STYLING */
 .features-container {
     grid-area: features-container;
+    padding-right: 3px;
+}
+
+.features-unique-header {
+    margin-top: 5px;
 }
 
 .features-unique {
@@ -1238,6 +1264,14 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
     justify-content: flex-end;
 }
 
+.inventory-container {
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Background_Inventory.png);
+    background-repeat: no-repeat;
+    margin: -10px;
+    padding: 10px;
+    padding-top: 2px;
+}
+
 .inventory-gold-container {
     display: flex;
     justify-content: space-between;
@@ -1248,6 +1282,10 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .inventory-gold-label {
     font-weight: bold;
     padding-right: 5px;
+}
+
+.inventory-header {
+    padding-top: 4px;
 }
 
 .inventory-label {
@@ -1372,11 +1410,11 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 }
 
 .sheet-rolltemplate-duality .sheet-hope {
-    text-shadow: 1px 1px 3px yellow;
+    text-shadow: 1px 1px 3px #ffff00;
 }
 
 .sheet-rolltemplate-duality .sheet-fear {
-    text-shadow: 1px 1px 3px purple;
+    text-shadow: 1px 1px 3px #800080;
 }
 
 /* DAMAGE ROLL TEMPLATE STYLING */

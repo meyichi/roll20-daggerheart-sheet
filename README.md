@@ -17,5 +17,4 @@ A character sheet for [Darrington Press](https://darringtonpress.com/)'s TTRPG, 
 - Prints to chat Features and Domain Effects with a single button press.
 
 ## Future Plans
-- **v1.2** - implement prettier styling and images for the sheet. (*Estimated Release Date:* mid-August)
 - **v1.3** - implement all corebook Domain Effects to auto-populate SRD text. (*Estimated Release Date:* ???)
