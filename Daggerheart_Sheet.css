@@ -5,7 +5,14 @@ h2 {
     justify-content: center;
 }
 
-h2 > img {
+h2::before {
+    content: url("https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Header_Left.png");
+    height: 25px;
+    padding-bottom: 3px;
+}
+
+h2::after {
+    content: url("https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Header_Right.png");
     height: 25px;
     padding-bottom: 3px;
 }
@@ -1330,6 +1337,11 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .sheet-rolltemplate-duality .sheet-duality-container {
     border: 2px solid black;
     padding: 5px;
+    color: black;
+}
+
+.sheet-rolltemplate-duality h3 {
+    color: black;
 }
 
 .sheet-rolltemplate-duality .sheet-duality-hope > .inlinerollresult {
@@ -1426,6 +1438,11 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .sheet-rolltemplate-damage .sheet-damage-container {
     border: 2px solid black;
     padding: 5px;
+    color: black;
+}
+
+.sheet-rolltemplate-damage h3 {
+    color: black;
 }
 
 .sheet-rolltemplate-damage .sheet-damage-name {
@@ -1456,6 +1473,11 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .sheet-rolltemplate-print-domain .sheet-print-domain-container {
     border: 2px solid black;
     padding: 5px;
+    color: black;
+}
+
+.sheet-rolltemplate-print-domain h3 {
+    color: black;
 }
 
 .sheet-rolltemplate-print-domain .sheet-print-domain-name {
@@ -1481,6 +1503,11 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 .sheet-rolltemplate-print-feature .sheet-print-feature-container {
     border: 2px solid black;
     padding: 5px;
+    color: black;
+}
+
+.sheet-rolltemplate-print-feature h3 {
+    color: black;
 }
 
 .sheet-rolltemplate-print-feature .sheet-print-feature-name {
