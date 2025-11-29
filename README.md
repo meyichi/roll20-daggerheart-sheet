@@ -18,4 +18,5 @@ A character sheet for [Darrington Press](https://darringtonpress.com/)'s TTRPG, 
 - Contains playtest material from [The Void](https://www.daggerheart.com/thevoid/), last updated 11/28/25.
 
 ## Future Plans
+- **v1.2.3** - implement a level-up tracker tab to effectively track level-up choices. (*Estimated Release Date:* early-December)
 - **v1.3** - implement all corebook Domain Effects to auto-populate SRD text. (*Estimated Release Date:* ???)
