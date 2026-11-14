@@ -66,7 +66,7 @@ select > option[disabled="true"] {
 input[type="radio"] {
     position: absolute;
     opacity: 0;
-    width:15px;
+    width: 15px;
     cursor: pointer;
     z-index: 1;
     margin-top: 6px;
@@ -142,9 +142,12 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 
 /* LAYOUT STYLING */
 .charsheet {
+    display: flex;
     background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Background_Top.png);
     background-repeat: no-repeat;
+    justify-content: center;
     min-width: 835px;
+    max-width: 835px;
     padding-top: 5px !important;
 }
 
@@ -1143,10 +1146,15 @@ input.toggle-spellcasting-trait[value="hidden"] ~ div.features-subclass-spellcas
 }
 
 input.toggle-subclass-foundation1[value="hidden"] ~ div.features-subclass-foundation1,
+input.toggle-subclass-foundation2[value="hidden"] ~ div.features-subclass-foundation2,
 input.toggle-subclass-specialization1[value="hidden"] ~ div.features-subclass-specialization1,
+input.toggle-subclass-specialization2[value="hidden"] ~ div.features-subclass-specialization2,
 input.toggle-multiclass-foundation1[value="hidden"] ~ div.features-multiclass-foundation1,
+input.toggle-multiclass-foundation2[value="hidden"] ~ div.features-multiclass-foundation2,
 input.toggle-multiclass-specialization1[value="hidden"] ~ div.features-multiclass-specialization1,
-input.toggle-subclass-mastery1[value="hidden"] ~ div.features-subclass-mastery1 {
+input.toggle-multiclass-specialization2[value="hidden"] ~ div.features-multiclass-specialization2,
+input.toggle-subclass-mastery1[value="hidden"] ~ div.features-subclass-mastery1,
+input.toggle-subclass-mastery2[value="hidden"] ~ div.features-subclass-mastery2 {
     display: none;
 }
 

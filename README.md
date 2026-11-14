@@ -7,16 +7,18 @@ A character sheet for [Darrington Press](https://darringtonpress.com/)'s TTRPG, 
 - Tracks Armor, Hit Points, Stress, Hope, Gold, and Inventory.
 - Auto-populates base values for Evasion, Hit Points, and Stress based on Class selection.
 - Auto-populates Features with SRD text based on Class, Subclass, Ancestry, and Community selections.
-- Implements multiclassing functionality and auto-populates Features for all corebook Classes depending on Player selections.
-- Supports Mixed Ancestry and auto-populates Features for all corebook Ancestries depending on player selections.
+- Implements multiclassing functionality and auto-populates Features for all Classes depending on Player selections.
+- Supports Mixed Ancestry and auto-populates Features for all Ancestries depending on player selections.
 - Supports Custom Classes, Subclasses, Ancestries, Communities, and Domain Effects.
 - Tracks all player-inputted Domain Effects.
 - Filters Vaulted Domain Effects for easy viewing of what's available.
 - Implements Short Rest, Long Rest, and Session Reset functionality for Domains and Features.
-- Tracks which corebook Features refresh under what conditions, automatically informing you of what they are and marking them as ready to be used again.
+- Tracks which Features refresh under what conditions, automatically informing you of what they are and marking them as ready to be used again.
 - Prints to chat Features and Domain Effects with a single button press.
-- Contains playtest material from [The Void](https://www.daggerheart.com/thevoid/), last updated 11/28/25.
+- Contains all character material from Hope & Fear.
+- Contains playtest material from [The Void](https://www.daggerheart.com/thevoid/), last updated 11/14/26.
 
 ## Future Plans
-- **v1.2.3** - implement a level-up tracker tab to effectively track level-up choices. (*Estimated Release Date:* early-December)
-- **v1.3** - implement all corebook Domain Effects to auto-populate SRD text. (*Estimated Release Date:* ???)
+- **v1.2.4** - implement a level-up tracker tab to effectively track level-up choices.
+- **1.2.5** - refactor Javascript Objects to cut down on repeated text.
+- **v1.3** - implement all printed Domain Effects to auto-populate SRD text.
