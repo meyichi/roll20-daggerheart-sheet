@@ -651,6 +651,7 @@
 <div class="tabs">
     <button type="action" class="button-domain-features" name="act_button_domain_features">Domain & Features</button>
     <button type="action" class="button-inventory" name="act_button_inventory">Inventory</button>
+    <button type="action" class="button-advancement" name="act_button_advancement">Advancement</button>
 </div>
 
 <!-- DOMAIN AND FEATURES -->
@@ -1362,6 +1363,7 @@
     </div>
 </div>
 
+<!-- INVENTORY -->
 <div class="inventory-container">
     <div class="inventory-gold centered">
         <h2>
@@ -1425,6 +1427,509 @@
                 <input type="text" name="attr_item_name">
             </div>
     </fieldset>
+</div>
+
+<!-- ADVANCEMENT -->
+<div class="advancement-container">
+    <div class="advancement-tier2-container">
+        <div class="no-top">
+            <h2>
+                Tier 2
+            </h2>
+            <h4 class="advancement-level-label centered">
+                Levels 2-4
+            </h4>
+
+            <p class="centered">
+                <i>At level 2, gain an additional Experience at +2 and gain a +1 bonus to your Proficiency.</i>
+            </p>
+
+            <p class="centered">
+                Choose two options from the list below and mark them.
+            </p>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-1" name="attr_advancement_tier2_trait_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-1 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_trait_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier2_trait_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_trait_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier2_trait_3_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_trait_3">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Gain a +1 bonus to two character traits you haven't boosted yet this tier and record them below.
+                </div>
+            </div>
+            <textarea class="advancement-options-textarea-traits"></textarea>
+
+            <div class="advancement-options-container no-top">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier2_hp_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_hp_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier2_hp_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_hp_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain one Hit Point slot.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier2_stress_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_stress_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier2_stress_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_stress_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain one Stress slot.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier2_experience_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_experience">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain a +1 bonus to two Experiences.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier2_domain_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_domain">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Choose an additional domain card of your level or lower from a domain you have access to (up to level 4).
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier2_evasion_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier2_evasion">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain a +1 bonus to your Evasion.
+                </div>
+            </div>
+
+            <p class="advancement-level-up-reminder">
+                Update your level and adjust your damage thresholds accordingly. Take an additional domain card
+                of your level or lower from a domain you have access to.
+            </p>
+        </div>
+    </div>
+    
+    <div class="advancement-tier3-container">
+        <div class="no-top">
+            <h2>
+                Tier 3
+            </h2>
+            <h4 class="advancement-level-label centered">
+                Levels 5-7
+            </h4>
+
+            <p class="centered">
+                <i>At level 5, gain an additional Experience at +2 and gain a +1 bonus to your Proficiency.</i>
+            </p>
+
+            <p class="centered">
+                Choose two options from the list below or any from the previous tier and mark them.
+            </p>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-1" name="attr_advancement_tier3_trait_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-1 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_trait_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier3_trait_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_trait_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_trait_3_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_trait_3">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Gain a +1 bonus to two character traits you haven't boosted yet this tier and record them below.
+                </div>
+            </div>
+            <textarea class="advancement-options-textarea-traits"></textarea>
+
+            <div class="advancement-options-container no-top">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier3_hp_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_hp_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_hp_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_hp_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain one Hit Point slot.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier3_stress_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_stress_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_stress_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_stress_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain one Stress slot.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_experience_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_experience">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain a +1 bonus to two Experiences.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_domain_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_domain">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Choose an additional domain card of your level or lower from a domain you have access to (up to level 7).
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_evasion_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_evasion">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain a +1 bonus to your Evasion.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_subclass_upgrade_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier3_subclass_upgrade">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Take an upgraded subclass card. Then cross out the multiclass option for this tier.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier3_proficiency_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier3_proficiency_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_proficiency_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier3_proficiency_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Mark both slots to increase your proficiency by +1.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier3_multiclass_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier3_multiclass_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier3_multiclass_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier3_multiclass_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Mark both slots to Multiclass: Choose an additional class for your character, then cross out an unused
+                    "Take an upgraded subclass card" and the other multiclass option on this sheet.
+                </div>
+            </div>
+
+            <p class="advancement-level-up-reminder">
+                Update your level and adjust your damage thresholds accordingly. Take an additional domain card
+                of your level or lower from a domain you have access to.
+            </p>
+        </div>
+    </div>
+
+    <div class="advancement-tier4-container">
+        <div class="no-top">
+            <h2>
+                Tier 4
+            </h2>
+            <h4 class="advancement-level-label centered">
+                Levels 8-10
+            </h4>
+
+            <p class="centered">
+                <i>At level 8, gain an additional Experience at +2 and gain a +1 bonus to your Proficiency.</i>
+            </p>
+
+            <p class="centered">
+                Choose two options from the list below or any from the previous tier and mark them.
+            </p>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-1" name="attr_advancement_tier4_trait_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-1 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_trait_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier4_trait_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_trait_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_trait_3_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_trait_3">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Gain a +1 bonus to two character traits you haven't boosted yet this tier and record them below.
+                </div>
+            </div>
+            <textarea class="advancement-options-textarea-traits"></textarea>
+
+            <div class="advancement-options-container no-top">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier4_hp_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_hp_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_hp_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_hp_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain one Hit Point slot.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier4_stress_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_stress_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_stress_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_stress_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain one Stress slot.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_experience_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_experience">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain a +1 bonus to two Experiences.
+                </div>
+            </div>
+
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_domain_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_domain">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Choose an additional domain card of your level or lower from a domain you have access to.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_evasion_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_evasion">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Permanently gain a +1 bonus to your Evasion.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_subclass_upgrade_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox" name="act_advancement_tier4_subclass_upgrade">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Take an upgraded subclass card. Then cross out the multiclass option for this tier.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier4_proficiency_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier4_proficiency_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_proficiency_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier4_proficiency_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Mark both slots to increase your proficiency by +1.
+                </div>
+            </div>
+            <div class="advancement-options-container">
+                <div class="advancement-options-checkboxes no-top">
+                    <input type="hidden" class="toggle-option-2" name="attr_advancement_tier4_multiclass_1_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-2 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier4_multiclass_1">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                    <input type="hidden" class="toggle-option-3" name="attr_advancement_tier4_multiclass_2_toggle" value="inactive">
+                    <div class="advancement-options-checkboxes-3 no-top">
+                        <button type="action" class="fake-checkbox bold-checkbox" name="act_advancement_tier4_multiclass_2">
+                            <span class="checked">✖</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="advancement-options-labels no-top subtext">
+                    Mark both slots to Multiclass: Choose an additional class for your character, then cross out an unused
+                    "Take an upgraded subclass card" and the other multiclass option on this sheet.
+                </div>
+            </div>
+
+            <p class="advancement-level-up-reminder">
+                Update your level and adjust your damage thresholds accordingly. Take an additional domain card
+                of your level or lower from a domain you have access to.
+            </p>
+        </div>
+    </div>
 </div>
 
 <rolltemplate class="sheet-rolltemplate-duality">
@@ -1824,6 +2329,166 @@
             toggle: "Feature_community_used_toggle",
             refresh: "Feature_community_used_refresh",
             name: "Feature_community_name"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_trait_1",
+            toggle: "Advancement_tier2_trait_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_trait_2",
+            toggle: "Advancement_tier2_trait_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_trait_3",
+            toggle: "Advancement_tier2_trait_3_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_hp_1",
+            toggle: "Advancement_tier2_hp_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_hp_2",
+            toggle: "Advancement_tier2_hp_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_stress_1",
+            toggle: "Advancement_tier2_stress_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_stress_2",
+            toggle: "Advancement_tier2_stress_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_experience",
+            toggle: "Advancement_tier2_experience_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_domain",
+            toggle: "Advancement_tier2_domain_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier2_evasion",
+            toggle: "Advancement_tier2_evasion_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_trait_1",
+            toggle: "Advancement_tier3_trait_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_trait_2",
+            toggle: "Advancement_tier3_trait_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_trait_3",
+            toggle: "Advancement_tier3_trait_3_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_hp_1",
+            toggle: "Advancement_tier3_hp_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_hp_2",
+            toggle: "Advancement_tier3_hp_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_stress_1",
+            toggle: "Advancement_tier3_stress_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_stress_2",
+            toggle: "Advancement_tier3_stress_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_experience",
+            toggle: "Advancement_tier3_experience_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_domain",
+            toggle: "Advancement_tier3_domain_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_evasion",
+            toggle: "Advancement_tier3_evasion_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_subclass_upgrade",
+            toggle: "Advancement_tier3_subclass_upgrade_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_proficiency_1",
+            toggle: "Advancement_tier3_proficiency_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_proficiency_2",
+            toggle: "Advancement_tier3_proficiency_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_multiclass_1",
+            toggle: "Advancement_tier3_multiclass_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier3_multiclass_2",
+            toggle: "Advancement_tier3_multiclass_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_trait_1",
+            toggle: "Advancement_tier4_trait_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_trait_2",
+            toggle: "Advancement_tier4_trait_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_trait_3",
+            toggle: "Advancement_tier4_trait_3_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_hp_1",
+            toggle: "Advancement_tier4_hp_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_hp_2",
+            toggle: "Advancement_tier4_hp_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_stress_1",
+            toggle: "Advancement_tier4_stress_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_stress_2",
+            toggle: "Advancement_tier4_stress_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_experience",
+            toggle: "Advancement_tier4_experience_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_domain",
+            toggle: "Advancement_tier4_domain_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_evasion",
+            toggle: "Advancement_tier4_evasion_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_subclass_upgrade",
+            toggle: "Advancement_tier4_subclass_upgrade_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_proficiency_1",
+            toggle: "Advancement_tier4_proficiency_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_proficiency_2",
+            toggle: "Advancement_tier4_proficiency_2_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_multiclass_1",
+            toggle: "Advancement_tier4_multiclass_1_toggle"
+        }, {
+            type: "advancement",
+            slot: "advancement_tier4_multiclass_2",
+            toggle: "Advancement_tier4_multiclass_2_toggle"
         }
     ];
 
@@ -2031,6 +2696,9 @@
         }, {
             button: "button_inventory",
             value: "inventory"
+        }, {
+            button: "button_advancement",
+            value: "advancement"
         }
     ];
 

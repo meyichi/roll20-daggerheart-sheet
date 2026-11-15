@@ -127,6 +127,10 @@ input[type=radio].sheet-zero + span::before {
     font-size: 18px;
 }
 
+.bold-checkbox {
+    border: solid 2px #000000;
+}
+
 input.toggle[value="hidden"] + button.fake-checkbox {
     display: none;
 }
@@ -732,9 +736,9 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
     margin-bottom: 5px;
 }
 
-.button-domain-features, .button-inventory {
+.button-domain-features, .button-inventory, .button-advancement {
     border: 1px solid black;
-    width: 33%;
+    width: 25%;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     margin-left: 5%;
@@ -742,7 +746,8 @@ input.toggle:not([value="active"]) + button.fake-checkbox > span.checked {
 }
 
 .tabs-toggle:not([value="domain-features"]) ~ div.domain-features-container,
-.tabs-toggle:not([value="inventory"]) ~ div.inventory-container {
+.tabs-toggle:not([value="inventory"]) ~ div.inventory-container,
+.tabs-toggle:not([value="advancement"]) ~ div.advancement-container {
     display: none;
 }
 
@@ -860,7 +865,10 @@ input.toggle-used:not([value="active"]) ~ div.domain-effect-inputs-used-toggle >
 input.toggle-vaulted:not([value="active"]) ~ div.domain-effect-inputs-vaulted-toggle > button.fake-checkbox > span.checked,
 input.toggle-shortrest:not([value="active"]) ~ div.domain-effect-tracker-shortrest-toggle > button.fake-checkbox > span.checked,
 input.toggle-longrest:not([value="active"]) ~ div.domain-effect-tracker-longrest-toggle > button.fake-checkbox > span.checked,
-input.toggle-session:not([value="active"]) ~ div.domain-effect-tracker-session-toggle > button.fake-checkbox > span.checked {
+input.toggle-session:not([value="active"]) ~ div.domain-effect-tracker-session-toggle > button.fake-checkbox > span.checked,
+input.toggle-option-1:not([value="active"]) ~ div.advancement-options-checkboxes-1 > button.fake-checkbox > span.checked,
+input.toggle-option-2:not([value="active"]) ~ div.advancement-options-checkboxes-2 > button.fake-checkbox > span.checked,
+input.toggle-option-3:not([value="active"]) ~ div.advancement-options-checkboxes-3 > button.fake-checkbox > span.checked {
     color: transparent;
 }
 
@@ -1279,6 +1287,7 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
     justify-content: flex-end;
 }
 
+/* INVENTORY STYLING */
 .inventory-container {
     background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Background_Inventory.png);
     background-repeat: no-repeat;
@@ -1334,6 +1343,68 @@ input.toggle-tokens[value="hidden"] ~ div.features-community-inputs-tokens-toggl
 
 .inventory-items-container-name {
     grid-area: inventory-items-container-name;
+}
+
+/* ADVANCEMENT STYLING */
+.advancement-container {
+    background-image: url(https://raw.githubusercontent.com/meyichi/roll20-daggerheart-sheet/refs/heads/master/Daggerheart_Background_Advancement.png);
+    background-repeat: no-repeat;
+    margin: -10px;
+    padding: 10px;
+    padding-top: 2px;
+    height: 837px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.advancement-tier2-container, .advancement-tier3-container, .advancement-tier4-container {
+    width: 240px;
+}
+
+.advancement-tier4-container {
+    margin-right: 3px
+}
+
+.advancement-level-label {
+    margin-top: 7px;
+}
+
+.advancement-options-container {
+    display: flex;
+    align-items: center;
+}
+
+.advancement-options-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "advancement-options-checkboxes-1 advancement-options-checkboxes-2 advancement-options-checkboxes-3";
+    min-width: 65px;
+}
+
+.advancement-options-checkboxes-1 {
+    grid-area: advancement-options-checkboxes-1;
+}
+
+.advancement-options-checkboxes-2 {
+    grid-area: advancement-options-checkboxes-2;
+}
+
+.advancement-options-checkboxes-3 {
+    grid-area: advancement-options-checkboxes-3;
+}
+
+.advancement-options-labels {
+    margin-left: 5px;
+}
+
+textarea.advancement-options-textarea-traits {
+    width: calc(100% - 10px);
+    height: 50px;
+}
+
+.advancement-level-up-reminder {
+    text-align: center;
+    padding-top: 5px;
 }
 
 /* DUALITY ROLL TEMPLATE STYLING */

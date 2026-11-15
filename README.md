@@ -6,7 +6,7 @@ A character sheet for [Darrington Press](https://darringtonpress.com/)'s TTRPG, 
 - Supports rolling with Advantage or Disadvantage and modifiers with a prompt before each Duality Dice roll.
 - Tracks Armor, Hit Points, Stress, Hope, Gold, and Inventory.
 - Auto-populates base values for Evasion, Hit Points, and Stress based on Class selection.
-- Auto-populates Features with SRD text based on Class, Subclass, Ancestry, and Community selections.
+- Auto-populates Features based on Class, Subclass, Ancestry, and Community selections.
 - Implements multiclassing functionality and auto-populates Features for all Classes depending on Player selections.
 - Supports Mixed Ancestry and auto-populates Features for all Ancestries depending on player selections.
 - Supports Custom Classes, Subclasses, Ancestries, Communities, and Domain Effects.
@@ -15,10 +15,10 @@ A character sheet for [Darrington Press](https://darringtonpress.com/)'s TTRPG, 
 - Implements Short Rest, Long Rest, and Session Reset functionality for Domains and Features.
 - Tracks which Features refresh under what conditions, automatically informing you of what they are and marking them as ready to be used again.
 - Prints to chat Features and Domain Effects with a single button press.
+- Tracks level-up and advancement.
 - Contains all character material from Hope & Fear.
 - Contains playtest material from [The Void](https://www.daggerheart.com/thevoid/), last updated 11/14/26.
 
 ## Future Plans
-- **v1.2.4** - implement a level-up tracker tab to effectively track level-up choices.
-- **1.2.5** - refactor Javascript Objects to cut down on repeated text.
-- **v1.3** - implement all printed Domain Effects to auto-populate SRD text.
+- **v1.2.5** - refactor Javascript Objects to cut down on repeated text.
+- **v1.3** - implement all printed Domain Effects to auto-populate text.
